@@ -1,5 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
+import {
+  inlineScriptHashes,
+  inlineStyleHashes,
+} from '../src/generated/sriHashes.mjs';
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
@@ -11,11 +15,14 @@ async function generateCSPHeader() {
       [
         "default-src 'self'",
         "object-src 'self'",
-        "script-src 'self'", // Removed hash dependencies
+        `script-src 'self' ${inlineScriptHashes.join(' ')}`,
         "connect-src 'self'",
-        "style-src 'self'",
+        `style-src 'self' ${inlineStyleHashes.join(' ')}`,
         "base-uri 'self'",
         "img-src 'self' https://ik.imagekit.io/truedaniyyel/ data:",
+        "media-src 'self' https://ik.imagekit.io/truedaniyyel/",
+        "font-src 'self' data: https://fonts.gstatic.com",
+        "frame-src 'self' https://www.google.com/",
         "frame-ancestors 'none'",
         "worker-src 'self'",
         "manifest-src 'none'",
