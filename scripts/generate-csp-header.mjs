@@ -9,15 +9,25 @@ const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
 async function generateCSPHeader() {
   try {
+    // Combine all script hashes
+    const scriptHashes = new Set([...inlineScriptHashes]);
+
+    // Combine all style hashes
+    const styleHashes = new Set([...inlineStyleHashes]);
+
     // Generate CSP header without inline and external script hashes
     const cspHeader =
       'Content-Security-Policy: ' +
       [
         "default-src 'self'",
         "object-src 'self'",
-        `script-src 'self' ${inlineScriptHashes.join(' ')}`,
+        `script-src 'self' ${Array.from(scriptHashes)
+          .map(hash => `'${hash}'`)
+          .join(' ')}`,
         "connect-src 'self'",
-        `style-src 'self' ${inlineStyleHashes.join(' ')}`,
+        `style-src 'self'${Array.from(styleHashes)
+          .map(hash => `'${hash}'`)
+          .join(' ')}`,
         "base-uri 'self'",
         "img-src 'self' https://ik.imagekit.io/truedaniyyel/ data:",
         "media-src 'self' https://ik.imagekit.io/truedaniyyel/",
