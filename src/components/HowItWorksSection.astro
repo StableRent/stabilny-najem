@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import consultationImage from '/src/assets/images/consultation.jpg';
+import designImage from '/src/assets/images/design.jpg';
+import transformImage from '/src/assets/images/transform.jpg';
+
 const processSteps = [
   {
     id: 1,
@@ -6,7 +11,7 @@ const processSteps = [
     description:
       'Begin with a consultation where you share your style, needs, and vision. We listen, ask the right questions, and get to know what truly makes a space feel like home for you.',
     image: {
-      src: '/src/assets/images/consultation.jpg',
+      src: consultationImage,
       alt: 'Consultation process visualization',
     },
   },
@@ -16,7 +21,7 @@ const processSteps = [
     description:
       'Using your input, we make a personalized design plan with mood boards, 3D renderings, and detailed layouts — so you can visualize your space before the transformation begins.',
     image: {
-      src: '/src/assets/images/design.jpg',
+      src: designImage,
       alt: 'Design process visualization',
     },
   },
@@ -26,7 +31,7 @@ const processSteps = [
     description:
       'Watch your space come to life as our team brings the design to reality with expert craftsmanship, thoughtful execution, and a keen eye for detail.',
     image: {
-      src: '/src/assets/images/transform.jpg',
+      src: transformImage,
       alt: 'Transformation process visualization',
     },
   },
@@ -47,7 +52,11 @@ const processSteps = [
                 <p class="process-step-description">{step.description}</p>
               </div>
               <div class="process-step-image-wrapper">
-                <img src={step.image.src} alt={step.image.alt} class="media" />
+                <Image
+                  src={step.image.src}
+                  alt={step.image.alt}
+                  class="media"
+                />
               </div>
             </div>
           ))

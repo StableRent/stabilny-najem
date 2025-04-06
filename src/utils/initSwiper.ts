@@ -7,6 +7,7 @@ export function initSwiper(sliderName: string, swiperConfig: SwiperOptions) {
     modules: [Navigation, Pagination],
     speed: 700,
     loop: true,
+    autoHeight: true,
     ...swiperConfig,
   });
 }

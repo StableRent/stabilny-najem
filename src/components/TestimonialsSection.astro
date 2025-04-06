@@ -1,5 +1,8 @@
 ---
 import BaseSwiper from './BaseSwiper.astro';
+import { Image } from 'astro:assets';
+import sarahJohnsonImage from '/src/assets/images/sarah-johnson.jpg';
+import emmaImage from '/src/assets/images/emma.jpg';
 
 const testimonials = [
   {
@@ -8,7 +11,7 @@ const testimonials = [
     client: {
       name: 'Sarah Johnson',
       location: 'Beverly Hills, California',
-      image: '/src/assets/images/sarah-johnson.jpg',
+      image: sarahJohnsonImage,
     },
     content:
       'Working with One Space Away transformed not just our home, but how we live in it. Their attention to detail and understanding of our needs was exceptional.',
@@ -19,7 +22,7 @@ const testimonials = [
     client: {
       name: 'Emma Lewis',
       location: 'Palm Beach, Florida',
-      image: '/src/assets/images/emma.jpg',
+      image: emmaImage,
     },
     content:
       "I had a general idea of what I wanted but wasn't sure how to bring it all together. They helped refine my vision and created a space that feels effortless and perfectly me.",
@@ -32,7 +35,7 @@ const testimonials = [
       location: 'Austin, Texas',
     },
     video: {
-      src: 'videos/charlotte-bennett.mov',
+      src: 'https://ik.imagekit.io/truedaniyyel/charlotte-bennett.mov/ik-video.mp4?updatedAt=1743951162048',
       poster: 'testimonial-video-placeholder.webp',
     },
   },
@@ -53,9 +56,9 @@ const testimonials = [
                 <>
                   <div class="testimonial-header">
                     <div class="testimonial-image">
-                      <img
+                      <Image
                         class="media"
-                        src={testimonial.client.image}
+                        src={testimonial.client.image as ImageMetadata}
                         alt={testimonial.client.name}
                       />
                     </div>
@@ -142,6 +145,10 @@ const testimonials = [
     border-radius: var(--radius-lg);
     overflow: hidden;
     height: 100%;
+    max-width: 23rem;
+  }
+
+  .testimonial-card:has(.testimonial-video-wrapper) {
     aspect-ratio: 2/3;
     max-height: 34.375rem;
   }
@@ -285,9 +292,9 @@ const testimonials = [
       },
       breakpoints: {
         320: { slidesPerView: 1, spaceBetween: 16 },
-        768: { slidesPerView: 2, spaceBetween: 64 },
-        872: { slidesPerView: 2, spaceBetween: 0 },
-        1200: { slidesPerView: 3, spaceBetween: 76 },
+        768: { slidesPerView: 2, spaceBetween: 80 },
+        872: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 },
       },
       on: {
         resize: function (swiper) {

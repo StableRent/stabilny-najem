@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import twoWomenSittingImage from '/src/assets/images/two-women-sitting.png';
+
 const aboutContent = [
   {
     id: 1,
@@ -19,9 +22,9 @@ const aboutContent = [
     <h2 class="section-title">Every home has a story.</h2>
     <div class="about-container">
       <div class="about-image-wrapper">
-        <img
-          src="/src/assets/images/two-women-sitting.png"
-          alt="Our company story visual"
+        <Image
+          src={twoWomenSittingImage}
+          alt="Two women sitting and talking about interior design."
           class="media"
         />
       </div>

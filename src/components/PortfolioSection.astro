@@ -1,16 +1,21 @@
 ---
 import BaseSwiper from './BaseSwiper.astro';
+import { Image } from 'astro:assets';
+import before1Image from '/src/assets/images/before1.png';
+import after1Image from '/src/assets/images/after1.png';
+import before2Image from '/src/assets/images/before2.png';
+import after2Image from '/src/assets/images/after2.png';
 
 const projects = [
   {
     id: 1,
     images: {
       before: {
-        src: '/src/assets/images/before1.png',
+        src: before1Image,
         alt: 'A modern, open-concept living space with a wooden table, chairs, and a metal staircase. The room is lit by ceiling lights and natural sunlight from large windows.',
       },
       after: {
-        src: '/src/assets/images/after1.png',
+        src: after1Image,
         alt: 'Unfinished, under renovation with construction tools, exposed wiring, and partially installed marble-patterned tiles.',
       },
     },
@@ -29,11 +34,11 @@ const projects = [
     id: 2,
     images: {
       before: {
-        src: '/src/assets/images/before2.png',
+        src: before2Image,
         alt: 'A modern kitchen with dark wood cabinets, stainless steel appliances, and a stone backsplash.',
       },
       after: {
-        src: '/src/assets/images/after2.png',
+        src: after2Image,
         alt: 'An older kitchen with white cabinets, beige tile flooring, and white appliances.',
       },
     },
@@ -60,17 +65,15 @@ const projects = [
         projects.map(project => (
           <div class="swiper-slide">
             <div class="project-image">
-              <img
+              <Image
                 class="image before"
                 src={project.images.before.src}
                 alt={project.images.before.alt}
-                loading="lazy"
               />
-              <img
+              <Image
                 class="image after active"
                 src={project.images.after.src}
                 alt={project.images.after.alt}
-                loading="lazy"
               />
             </div>
             <div class="project-info">
