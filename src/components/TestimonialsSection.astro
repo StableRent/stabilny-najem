@@ -333,17 +333,21 @@ const testimonials = [
 
       if (!video || !control) return;
 
-      const toggleVideo = () => {
-        video.paused ? video.play() : video.pause();
+      const updatePlayingState = () => {
         control.classList.toggle('playing', !video.paused);
         wrapper.classList.toggle('playing', !video.paused);
       };
 
+      const toggleVideo = () => {
+        video.paused ? video.play() : video.pause();
+        updatePlayingState();
+      };
+
+      // Add event listeners for both button click and native controls
       control.addEventListener('click', toggleVideo);
-      video.addEventListener('ended', () => {
-        control.classList.remove('playing');
-        wrapper.classList.remove('playing');
-      });
+      video.addEventListener('play', updatePlayingState);
+      video.addEventListener('pause', updatePlayingState);
+      video.addEventListener('ended', updatePlayingState);
     });
 
     return () => {

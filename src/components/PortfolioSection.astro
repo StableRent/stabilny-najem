@@ -89,17 +89,6 @@ const projects = [
                 </h3>
                 <p class="info-text">{project.info.result.text}</p>
               </div>
-              <a href="#" class="btns--secondary view-details">
-                <span class="btn--secondary btn--secondary-unhovered">
-                  View More Details
-                </span>
-                <span
-                  class="btn--secondary btn--secondary-hovered"
-                  aria-hidden="true"
-                >
-                  View More Details
-                </span>
-              </a>
             </div>
           </div>
         ))
@@ -158,6 +147,7 @@ const projects = [
   .project-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: var(--px-32);
   }
 
@@ -168,7 +158,6 @@ const projects = [
   }
 
   .info-title {
-    font-size: var(--text-lg);
     margin-bottom: 0;
   }
 
@@ -200,10 +189,6 @@ const projects = [
     .swiper-slide {
       grid-template-columns: 1fr;
       gap: var(--px-32);
-    }
-
-    .info-title {
-      font-size: 1.188rem;
     }
   }
 </style>

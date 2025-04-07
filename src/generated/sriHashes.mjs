@@ -10,23 +10,23 @@ export const inlineScriptHashes = /** @type {string[]} */ ([
 ])
 
 export const inlineStyleHashes = /** @type {string[]} */ ([
-	'sha256-0YV5UIR9GS/zPnvvjlGHOyXdtuoRQjYxTczCK1dGPtA=',
-	'sha256-6PfELyiidT8VC1svdJYc2daL4wXiEYwfT4ZmGJir0yI=',
-	'sha256-Me2bAulHoQNlvL2ur/HJrFI5dGlbIXBkuTjs80i+X6c=',
-	'sha256-j6YeDz0oloHbQixDgS0IrNQmnqbw+hK1TvkYUhd/nLU=',
+	'sha256-Jgqyr8wtkUOMKrg3Y72Fl4UDNs1QKcTwhzsBSlAf5qU=',
+	'sha256-d7uUf847pkGadU93WPh30fnO7mqNSct6eNabI9i+rmw=',
+	'sha256-uai0S7YxNdv18CB4KrEa1K0AbKeThigmOuqQYqAEut8=',
 	'sha256-wsNStdb68JwcU5tDQKh8QKoAVXQJ972jPZrUjv/0OLI=',
+	'sha256-xbOpu6hZzYgnEuMtZjiDvcfd23MihFKS+I33hBI5cN8=',
 ])
 
 export const extScriptHashes = /** @type {string[]} */ ([
-	'sha256-AFy86Cu6U6Eehe4j8C1BPYQVNwjqPEYajrsixXlqEy0=',
 	'sha256-IRn0fOjNAmRtt40co7w8RZvRUAYVQAQN0aRg9lX+vgk=',
-	'sha256-TtjD2IOepUvO1kHq6cbokSuI3H3A8eYdZmwvy6fjJ7k=',
-	'sha256-b0f8wkSr0hUjerK49/UVzsaLCWQzBNLMw/tUkp5/k8s=',
+	'sha256-R+WvdZ5WVpZtCoYlS3ynF8Tq3OaKumJKDI0YDpoN99o=',
+	'sha256-fLpXueewo49m443rbLHU8+yrO2deSJ+x3Dsn3xWe+P8=',
+	'sha256-zCgxzkldH6bfz5ohHJ8kxcWJh737/25PSN9HHFvUNpE=',
 ])
 
 export const extStyleHashes = /** @type {string[]} */ ([
-	'sha256-+PAtYaPBYz8b/hTIvNOK1VLjuOoM2FLs9zFp4y7W75I=',
-	'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
+	'sha256-ZCO1dhdl6kAP6gGbwnAfno5KUf7f99hyGI0Rq1zwdWg=',
+	'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
 ])
 
 export const perPageSriHashes =
@@ -38,8 +38,8 @@ export const perPageSriHashes =
 				'sha256-cgYXg45jQyjXKtgd9wbS1hBCPdT8FC8czqSn73TiBTQ=',
 			],
 			styles: [
-				'sha256-Me2bAulHoQNlvL2ur/HJrFI5dGlbIXBkuTjs80i+X6c=',
-				'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
+				'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
+				'sha256-uai0S7YxNdv18CB4KrEa1K0AbKeThigmOuqQYqAEut8=',
 				'sha256-wsNStdb68JwcU5tDQKh8QKoAVXQJ972jPZrUjv/0OLI=',
 			],
 		},
@@ -50,8 +50,8 @@ export const perPageSriHashes =
 				'sha256-jHZEXQqVhZFPso+5kXVA0zAifxxKdJFoQG7beIWPDLI=',
 			],
 			styles: [
-				'sha256-0YV5UIR9GS/zPnvvjlGHOyXdtuoRQjYxTczCK1dGPtA=',
-				'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
+				'sha256-d7uUf847pkGadU93WPh30fnO7mqNSct6eNabI9i+rmw=',
+				'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
 				'sha256-wsNStdb68JwcU5tDQKh8QKoAVXQJ972jPZrUjv/0OLI=',
 			],
 		},
@@ -62,24 +62,24 @@ export const perPageSriHashes =
 				'sha256-ah+FxXIQ+k2iKGPZR0kB9rkgcWbIo4FL8uuLg125jls=',
 			],
 			styles: [
-				'sha256-6PfELyiidT8VC1svdJYc2daL4wXiEYwfT4ZmGJir0yI=',
-				'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
+				'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
 				'sha256-wsNStdb68JwcU5tDQKh8QKoAVXQJ972jPZrUjv/0OLI=',
+				'sha256-xbOpu6hZzYgnEuMtZjiDvcfd23MihFKS+I33hBI5cN8=',
 			],
 		},
 		'index.html': {
 			scripts: [
-				'sha256-AFy86Cu6U6Eehe4j8C1BPYQVNwjqPEYajrsixXlqEy0=',
 				'sha256-IRn0fOjNAmRtt40co7w8RZvRUAYVQAQN0aRg9lX+vgk=',
+				'sha256-R+WvdZ5WVpZtCoYlS3ynF8Tq3OaKumJKDI0YDpoN99o=',
 				'sha256-R830yJhjd6sb+VL8eLUHCjDQj7I84yHU0/SEIB9OxnU=',
-				'sha256-TtjD2IOepUvO1kHq6cbokSuI3H3A8eYdZmwvy6fjJ7k=',
 				'sha256-ah+FxXIQ+k2iKGPZR0kB9rkgcWbIo4FL8uuLg125jls=',
 				'sha256-j5sZqFOdVXkdnkgbuLPDk8tkHlvTQky3bV+tvWDIsks=',
+				'sha256-zCgxzkldH6bfz5ohHJ8kxcWJh737/25PSN9HHFvUNpE=',
 			],
 			styles: [
-				'sha256-+PAtYaPBYz8b/hTIvNOK1VLjuOoM2FLs9zFp4y7W75I=',
-				'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
-				'sha256-j6YeDz0oloHbQixDgS0IrNQmnqbw+hK1TvkYUhd/nLU=',
+				'sha256-Jgqyr8wtkUOMKrg3Y72Fl4UDNs1QKcTwhzsBSlAf5qU=',
+				'sha256-ZCO1dhdl6kAP6gGbwnAfno5KUf7f99hyGI0Rq1zwdWg=',
+				'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
 			],
 		}}
 )
@@ -87,12 +87,12 @@ export const perPageSriHashes =
 export const perResourceSriHashes = {
 	scripts: /** @type {Record<string,string>} */ ({
 		'/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CMTcOisY.js': 'sha256-IRn0fOjNAmRtt40co7w8RZvRUAYVQAQN0aRg9lX+vgk=',
-		'/_astro/PortfolioSection.astro_astro_type_script_index_0_lang.C9KMlNTx.js': 'sha256-AFy86Cu6U6Eehe4j8C1BPYQVNwjqPEYajrsixXlqEy0=',
-		'/_astro/TestimonialsSection.astro_astro_type_script_index_0_lang.C40Ea4p4.js': 'sha256-TtjD2IOepUvO1kHq6cbokSuI3H3A8eYdZmwvy6fjJ7k=',
-		'/_astro/initSwiper.CIzc6jQW.js': 'sha256-b0f8wkSr0hUjerK49/UVzsaLCWQzBNLMw/tUkp5/k8s=',
+		'/_astro/PortfolioSection.astro_astro_type_script_index_0_lang.CUzMX98E.js': 'sha256-R+WvdZ5WVpZtCoYlS3ynF8Tq3OaKumJKDI0YDpoN99o=',
+		'/_astro/TestimonialsSection.astro_astro_type_script_index_0_lang.8lJg2pUf.js': 'sha256-zCgxzkldH6bfz5ohHJ8kxcWJh737/25PSN9HHFvUNpE=',
+		'/_astro/initSwiper.VPX6y0en.js': 'sha256-fLpXueewo49m443rbLHU8+yrO2deSJ+x3Dsn3xWe+P8=',
 	}),
 	styles: /** @type {Record<string,string>} */ ({
-		'/_astro/503.BPhQ8nOM.css': 'sha256-PRUT4OmyLLUFXDHbLHe8jIon/nuxjxwkg0o+qlMnH2M=',
-		'/_astro/index.YlPoU1ig.css': 'sha256-+PAtYaPBYz8b/hTIvNOK1VLjuOoM2FLs9zFp4y7W75I=',
+		'/_astro/503.iWwUUmoZ.css': 'sha256-qHQH0/l8bvdOnKdvEopmx2lBaPkw8/C3hx0+uyDTvYI=',
+		'/_astro/index.oV15oxBT.css': 'sha256-ZCO1dhdl6kAP6gGbwnAfno5KUf7f99hyGI0Rq1zwdWg=',
 	}),
 }
