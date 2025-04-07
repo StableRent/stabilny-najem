@@ -30,7 +30,7 @@
         </li>
       </ul>
 
-      <a href="#contact" class="btns--secondary mobile-cta">
+      <a href="#contact" class="nav-link btns--secondary mobile-cta">
         <span class="btn--secondary btn--secondary-unhovered"
           >Let's work together</span
         >
@@ -112,7 +112,7 @@
     margin-inline: var(--px-16);
   }
 
-  .nav-link {
+  .nav-link:not(.mobile-cta) {
     display: flex;
     opacity: 0.65;
     transition: all var(--transition-short);
@@ -182,8 +182,8 @@
   }
 
   @media screen and (max-width: 64rem) {
-    .nav-container {
-      margin-inline: var(--px-16);
+    .header {
+      padding-inline: var(--px-16);
     }
 
     .desktop-cta {
@@ -192,6 +192,10 @@
 
     .mobile-cta {
       display: inline-block;
+    }
+
+    .btn--secondary {
+      font-size: var(--text-2xl);
     }
 
     .hamburger {
@@ -220,13 +224,17 @@
 
     .nav-menu {
       flex-direction: column;
-      gap: var(--px-16);
-      margin-bottom: var(--px-32);
+      gap: var(--px-20);
+      margin-bottom: var(--px-40);
       justify-content: flex-start;
     }
 
     .nav-item {
       margin: 0;
+    }
+
+    .nav-link:not(.mobile-cta) {
+      font-size: var(--text-2xl);
     }
 
     .hamburger.active .hamburger-line:nth-child(1) {
@@ -265,10 +273,9 @@
   function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navContent = document.querySelector('.nav-content');
-    const navLinks = document.querySelectorAll('.nav-link');
     const overlay = document.querySelector('.mobile-overlay');
 
-    if (!hamburger || !navContent || !navLinks || !overlay) return;
+    if (!hamburger || !navContent || !overlay) return;
 
     function closeMenu() {
       hamburger?.classList.remove('active');
@@ -296,14 +303,21 @@
       }
     };
 
+    // Event delegation for nav links
+    navContent.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('nav-link')) {
+        closeMenu();
+      }
+    });
+
     hamburger.addEventListener('click', toggleMenu);
-    navLinks.forEach(link => link.addEventListener('click', closeMenu));
     overlay.addEventListener('click', closeMenu);
     document.addEventListener('keydown', handleEscape);
 
     return () => {
       hamburger.removeEventListener('click', toggleMenu);
-      navLinks.forEach(link => link.removeEventListener('click', closeMenu));
+      navContent.removeEventListener('click', closeMenu);
       overlay.removeEventListener('click', closeMenu);
       document.removeEventListener('keydown', handleEscape);
     };

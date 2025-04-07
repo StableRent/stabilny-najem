@@ -38,6 +38,12 @@ p {
   color: var(--color-text-primary);
 }
 
+.section-subtitle {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--px-16);
+}
+
 .no-scroll {
   overflow: hidden;
 }
@@ -86,7 +92,7 @@ p {
 .btns--secondary {
   position: relative;
   overflow: hidden;
-  height: var(--px-36);
+  height: auto;
 }
 
 .btn--secondary {

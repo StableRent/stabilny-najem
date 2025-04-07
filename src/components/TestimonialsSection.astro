@@ -199,7 +199,7 @@ const testimonials = [
 
   .video-header {
     position: absolute;
-    top: var(--px-16);
+    top: var(--px-10);
     left: var(--px-16);
     right: var(--px-16);
     display: flex;
@@ -213,47 +213,6 @@ const testimonials = [
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  .video-control {
-    width: var(--px-40);
-    height: var(--px-40);
-    border-radius: 50%;
-    background-color: var(--color-white);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-medium);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .video-control:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  .video-control svg {
-    height: var(--px-20);
-  }
-
-  .video-control .icon-play {
-    padding-left: 0.188rem;
-  }
-
-  .video-control .icon-pause {
-    display: none;
-  }
-
-  .video-control.playing .icon-play {
-    display: none;
-  }
-
-  .video-control.playing .icon-pause {
-    display: block;
-  }
-
   .client-name {
     font-size: var(--text-xl);
     font-weight: 600;
@@ -264,7 +223,64 @@ const testimonials = [
     display: none;
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    .video-control {
+      width: var(--px-40);
+      height: var(--px-40);
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-medium);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-control:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-control svg {
+      height: var(--px-20);
+    }
+
+    .video-control .icon-play {
+      padding-left: 0.188rem;
+    }
+
+    .video-control .icon-pause {
+      display: none;
+    }
+
+    .video-control.playing .icon-play {
+      display: none;
+    }
+
+    .video-control.playing .icon-pause {
+      display: block;
+    }
+  }
+
   @media screen and (max-width: 48rem) {
+    .swiper-slide {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+
     .testimonial-header {
       padding: var(--px-16);
     }
@@ -275,7 +291,7 @@ const testimonials = [
 
     .video-header {
       top: var(--px-8);
-      left: var(--px-8);
+      left: var(--px-14);
       right: var(--px-8);
     }
   }

@@ -48,7 +48,9 @@ const processSteps = [
           processSteps.map(step => (
             <div class="process-step">
               <div class="process-step-content">
-                <h3 class="process-step-title">{step.title}</h3>
+                <h3 class="section-subtitle process-step-title">
+                  {step.title}
+                </h3>
                 <p class="process-step-description">{step.description}</p>
               </div>
               <div class="process-step-image-wrapper">
@@ -89,9 +91,7 @@ const processSteps = [
   }
 
   .process-step-title {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    margin-bottom: var(--px-16);
+    font-size: 1.313rem;
   }
 
   .process-step-description {
@@ -117,7 +117,7 @@ const processSteps = [
 
   @media screen and (max-width: 48rem) {
     .process-steps {
-      gap: var(--px-32);
+      gap: var(--px-36);
     }
 
     .process-step {

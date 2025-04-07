@@ -32,7 +32,7 @@ const aboutContent = [
         {
           aboutContent.map(content => (
             <>
-              <h3 class="about-subtitle">{content.title}</h3>
+              <h3 class="section-subtitle about-subtitle">{content.title}</h3>
               <p class="about-text">{content.text}</p>
             </>
           ))
@@ -60,12 +60,6 @@ const aboutContent = [
 
   .about-content {
     max-width: 37.5rem;
-  }
-
-  .about-subtitle {
-    font-size: var(--text-xl);
-    font-weight: 600;
-    margin-bottom: var(--px-16);
   }
 
   .about-text {

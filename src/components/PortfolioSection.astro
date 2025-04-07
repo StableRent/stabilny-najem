@@ -78,11 +78,15 @@ const projects = [
             </div>
             <div class="project-info">
               <div class="info-section">
-                <h3 class="info-title">{project.info.challenge.title}</h3>
+                <h3 class="section-subtitle info-title">
+                  {project.info.challenge.title}
+                </h3>
                 <p class="info-text">{project.info.challenge.text}</p>
               </div>
               <div class="info-section">
-                <h3 class="info-title">{project.info.result.title}</h3>
+                <h3 class="section-subtitle info-title">
+                  {project.info.result.title}
+                </h3>
                 <p class="info-text">{project.info.result.text}</p>
               </div>
               <a href="#" class="btns--secondary view-details">
@@ -165,7 +169,7 @@ const projects = [
 
   .info-title {
     font-size: var(--text-lg);
-    font-weight: 600;
+    margin-bottom: 0;
   }
 
   .view-details {
@@ -196,6 +200,10 @@ const projects = [
     .swiper-slide {
       grid-template-columns: 1fr;
       gap: var(--px-32);
+    }
+
+    .info-title {
+      font-size: 1.188rem;
     }
   }
 </style>
