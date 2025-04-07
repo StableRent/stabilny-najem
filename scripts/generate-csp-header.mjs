@@ -1,19 +1,21 @@
 import fs from 'fs/promises';
 import path from 'path';
-import {
-  inlineScriptHashes,
-  inlineStyleHashes,
-} from '../src/generated/sriHashes.mjs';
+import { inlineScriptHashes } from '../src/generated/sriHashes.mjs';
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
 async function generateCSPHeader() {
   try {
+    // Check if the file exists first
+    try {
+      await fs.access(headersPath);
+    } catch {
+      console.error(`_headers file not found at ${headersPath}`);
+      return;
+    }
+
     // Combine all script hashes
     const scriptHashes = new Set([...inlineScriptHashes]);
-
-    // Combine all style hashes
-    const styleHashes = new Set([...inlineStyleHashes]);
 
     // Generate CSP header without inline and external script hashes
     const cspHeader =
@@ -25,9 +27,7 @@ async function generateCSPHeader() {
           .map(hash => `'${hash}'`)
           .join(' ')}`,
         "connect-src 'self'",
-        `style-src 'self' ${Array.from(styleHashes)
-          .map(hash => `'${hash}'`)
-          .join(' ')}`,
+        "style-src 'self' 'unsafe-inline'",
         "base-uri 'self'",
         "img-src 'self' https://ik.imagekit.io/truedaniyyel/ data:",
         "media-src 'self' https://ik.imagekit.io/truedaniyyel/",
