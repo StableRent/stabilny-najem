@@ -44,10 +44,10 @@ import { SITE } from '@consts';
           </div>
           <h3 class="contact-subtitle">Say hello</h3>
           <div class="contact-details">
-            <a href="mailto:{SITE.EMAIL}" class="contact-detail contact-email"
+            <a href=`mailto:${SITE.EMAIL}` class="contact-detail contact-email"
               >{SITE.EMAIL}</a
             >
-            <a href="tel:{SITE.TELEPHONE}" class="contact-detail contact-phone"
+            <a href=`tel:${SITE.TELEPHONE}` class="contact-detail contact-phone"
               >{SITE.TELEPHONE}</a
             >
           </div>
@@ -70,7 +70,7 @@ import { SITE } from '@consts';
           <h3 class="contact-subtitle">Location</h3>
           <a
             class="contact-detail"
-            href="https://maps.google.com/?q={SITE.ADDRESS}"
+            href=`https://maps.google.com/?q=${SITE.ADDRESS}`
             class="contact-address">{SITE.ADDRESS}</a
           >
         </div>
