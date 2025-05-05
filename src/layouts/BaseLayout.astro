@@ -142,6 +142,7 @@ const schemaData = {
     position: absolute;
     top: var(--px-10);
     left: var(--px-8);
+    transform: translateY(-200%);
     padding: var(--px-12) var(--px-16);
     border-radius: var(--px-6);
     color: white;
@@ -151,7 +152,8 @@ const schemaData = {
     transition: opacity var(--transition-short);
   }
 
-  .skip-link:focus {
+  .skip-link:focus-visible {
     opacity: 1;
+    transform: translateY(0);
   }
 </style>
