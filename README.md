@@ -1,0 +1,80 @@
+One Space Away - Interior Design Template
+
+**One Space Away** is single-page template built for interior designers, architects, and home stylists.
+
+**Features**
+
+- Astro 6.0 Ready:
+  - Native Font Optimization
+  - Pre-configured CSP (Content Security Policy) and security headers (optimized for Cloudflare, easily adaptable for Vercel or Netlify).
+- Responsive: mobile, tablet, and desktop devices.
+- Stack: Astro (HTML, CSS, and JS) with minimal dependencies.
+
+## Media & Image Optimization
+
+### Local Optimization (Default)
+
+By default, the template uses Astro’s built-in `<Image />` component for automatic optimization (WebP/AVIF conversion, resizing).
+
+```astro
+import consultationImage from '/src/assets/images/consultation.jpg';
+
+<div class="process-step-image-wrapper">
+   <Image
+     src={consultationImage}
+     alt="Interior Design Consultation"
+     class="media"
+   />
+</div>
+```
+
+### Cloudinary Integration (Optional)
+
+For top-tier loading speeds and high-resolution assets, you can easily swap to [Astro-Cloudinary](https://docs.astro.build/en/guides/media/cloudinary/).
+
+```astro
+import { CldImage } from 'astro-cloudinary';
+
+<CldImage
+  src="your-public-id"
+  width="800"
+  height="600"
+  alt="Project Transformation"
+/>
+```
+
+## Fonts
+
+All local fonts are stored in `src/assets/fonts/`. To add or change fonts:
+
+1. Drop your `.woff2` files into the fonts folder.
+2. Update the `astro.config.mjs` font provider:
+
+```mjs
+fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "YourFontName",
+      cssVariable: "--font-custom",
+      options: {
+        variants: [{
+            src: ["./src/assets/fonts/YourFont.woff2"],
+            weight: "normal",
+            style: "normal",
+          }],
+      },
+    },
+  ],
+```
+
+3. Update the variable in `src/styles/_reset.css`:
+
+```css
+font-family: var(--font-custom), system-ui, sans-serif;
+```
+
+*For more info on using remote fonts (Google Fonts, etc.), check the [Astro Font Provider Reference](https://docs.astro.build/en/reference/font-provider-reference/).*
+
+## Technical Details
+
+Carousels: Powered by **Swiper.js.** Initialization logic is in `utils/initSwiper.ts`.
