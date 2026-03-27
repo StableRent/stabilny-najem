@@ -10,6 +10,10 @@ export default defineConfig({
   site: SITE.CANONICAL_URL,
   output: "static",
 
+  build: {
+    inlineStylesheets: "auto",
+  },
+
   fonts: [
     {
       provider: fontProviders.local(),
