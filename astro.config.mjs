@@ -25,6 +25,7 @@ export default defineConfig({
             src: ["./src/assets/fonts/DMSans.woff2"],
             weight: "normal",
             style: "normal",
+            display: "swap",
           },
         ],
       },
