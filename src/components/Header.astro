@@ -7,54 +7,34 @@
     >
         <div class="logo-container">
             <a href="/" class="logo" aria-label="Stabilny Najem home">
-                <img src="/logo-full.png" alt="Stabilny Najem" style="height: 48px; width: auto;" />
+                <img src="/logo-full.png" alt="Stabilny Najem" class="logo-img" />
             </a>
         </div>
 
         <div class="nav-content">
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="#hero" class="nav-link">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#about" class="nav-link">O nas</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#how-it-works" class="nav-link">How it Works</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link">Kontakt</a>
                 </li>
             </ul>
 
-            <a href="#contact" class="nav-link btns--secondary mobile-cta">
-                <span class="btn--secondary btn--secondary-unhovered"
-                    >Let's work together</span
-                >
-                <span
-                    class="btn--secondary btn--secondary-hovered"
-                    aria-hidden="true"
-                >
-                    Let's work together
-                </span>
+            <a href="tel:+48510159125" class="nav-link btns--secondary mobile-cta">
+                <span class="btn--secondary btn--secondary-unhovered">Zadzwoń do nas</span>
+                <span class="btn--secondary btn--secondary-hovered" aria-hidden="true">Zadzwoń do nas</span>
             </a>
         </div>
 
         <!-- Desktop CTA -->
-        <a href="#contact" class="btns--secondary desktop-cta">
-            <span class="btn--secondary btn--secondary-unhovered"
-                >Let's work together</span
-            >
-            <span
-                class="btn--secondary btn--secondary-hovered"
-                aria-hidden="true"
-            >
-                Let's work together
-            </span>
+        <a href="tel:+48510159125" class="btns--secondary desktop-cta btn-phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-3.684 1.684-9.401-9.43-5.8-11.308l1.053-.519 1.746 3.409-1.042.513c-1.095.587 1.185 5.04 2.305 4.497l1.032-.505 1.76 3.397-1.054.516z"/></svg>
+            <span class="btn--secondary btn--secondary-unhovered">Zadzwoń do nas</span>
+            <span class="btn--secondary btn--secondary-hovered" aria-hidden="true">Zadzwoń do nas</span>
         </a>
 
         <button
@@ -90,8 +70,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: var(--text-base);
+        font-size: var(--text-lg);
         font-weight: 500;
+    }
+
+    .logo-img {
+        height: 72px;
+        width: auto;
+    }
+
+    .scrolled .logo-img {
+        height: 52px;
     }
 
     .hamburger {
@@ -135,7 +124,21 @@
     }
 
     .desktop-cta {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--px-6);
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        padding: var(--px-14) var(--px-28);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-base);
+        font-weight: 500;
+        transition: background-color var(--transition-short);
+    }
+
+    .desktop-cta .btn--secondary {
+        border-bottom: none;
+        color: var(--color-white);
     }
 
     .mobile-cta {
@@ -189,6 +192,10 @@
     @media (hover: hover) and (pointer: fine) {
         .nav-link:hover {
             opacity: 1;
+        }
+
+        .desktop-cta:hover {
+            background-color: var(--color-secondary);
         }
     }
 
@@ -314,7 +321,6 @@
             }
         };
 
-        // Event delegation for nav links
         navContent.addEventListener("click", (e) => {
             const target = e.target as HTMLElement;
             if (target.classList.contains("nav-link")) {

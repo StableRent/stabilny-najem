@@ -1,0 +1,112 @@
+<section id="about" class="problem">
+    <div class="section-container problem-container">
+        <div class="problem-content">
+            <h2 class="problem-title">Po co Ci to wszystko?</h2>
+            <div class="problem-text">
+                <p>Wynajem mieszkania często wygląda dobrze tylko na papierze.</p>
+                <p>Najpierw ogłoszenie. Telefony. Prezentacje. Selekcja najemców.</p>
+                <p>Potem umowy, protokoły, płatności, drobne naprawy, bieżący kontakt.</p>
+                <p>A między tym wszystkim — Twój czas. Twoja głowa. Twoja odpowiedzialność.</p>
+                <p>Gdy wszystko działa, jest dobrze. Ale gdy pojawia się pustostan, usterka albo opóźnienie w&nbsp;płatności — problem jest tylko Twój.</p>
+            </div>
+
+            <hr class="problem-divider" />
+
+            <h3 class="problem-punchline">Wynajem nie miał być Twoim drugim etatem.</h3>
+            <p class="problem-solution">Miał być spokojnym, przewidywalnym dochodem.</p>
+            <p class="problem-solution problem-solution-strong">Dlatego przejmujemy go za Ciebie.</p>
+
+            <div class="problem-cta">
+                <a href="tel:+48510159125" class="btn btn--primary btn--big">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-3.684 1.684-9.401-9.43-5.8-11.308l1.053-.519 1.746 3.409-1.042.513c-1.095.587 1.185 5.04 2.305 4.497l1.032-.505 1.76 3.397-1.054.516z"/></svg>
+                    Porozmawiajmy: 510 159 125
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .problem {
+        background-color: var(--color-white);
+        padding-block: var(--px-112);
+    }
+
+    .problem-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .problem-content {
+        max-width: 44rem;
+    }
+
+    .problem-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: var(--px-48);
+        color: var(--color-primary);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    .problem-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--px-16);
+        font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+        line-height: 1.8;
+        color: var(--color-text-dark);
+    }
+
+    .problem-text p {
+        opacity: 0.9;
+    }
+
+    .problem-divider {
+        border: none;
+        border-top: 3px solid var(--color-accent);
+        width: 5rem;
+        margin-block: var(--px-56);
+    }
+
+    .problem-punchline {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: var(--px-16);
+        line-height: 1.3;
+    }
+
+    .problem-solution {
+        font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+        line-height: 1.7;
+        color: var(--color-text-dark);
+        opacity: 0.9;
+    }
+
+    .problem-solution-strong {
+        font-weight: 700;
+        font-size: clamp(1.2rem, 1.5vw, 1.375rem);
+        color: var(--color-primary);
+        opacity: 1;
+        margin-top: var(--px-6);
+    }
+
+    .problem-cta {
+        margin-top: var(--px-48);
+    }
+
+    .btn--big {
+        padding: var(--px-20) var(--px-40);
+        font-size: var(--text-base);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--px-10);
+    }
+
+    @media screen and (max-width: 48rem) {
+        .problem {
+            padding-block: var(--px-80);
+        }
+    }
+</style>

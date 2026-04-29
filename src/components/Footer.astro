@@ -1,6 +1,5 @@
 ---
-import { SITE, SOCIALS } from "@consts";
-import socialIcons from "@assets/socialIcons";
+import { SITE } from "@consts";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -8,90 +7,46 @@ const currentYear = new Date().getFullYear();
 <footer class="main-footer">
     <div class="section-container footer footer-primary">
         <div class="footer-brand">
-            <a href="/" class="headline logo" aria-label="One Space Away home">
-                One Space Away
+            <a href="/" class="logo" aria-label="Stabilny Najem home">
+                <img src="/logo-full.png" alt="Stabilny Najem" class="footer-logo-img" />
             </a>
             <p class="site-description">{SITE.DESCRIPTION}</p>
 
             <address class="footer-nav-list contact-info">
                 <p class="phone">
                     <span class="label">T.</span>
-                    <a href=`tel:${SITE.TELEPHONE}`>{SITE.TELEPHONE}</a>
-                </p>
-                <p class="email">
-                    <span class="label">E.</span>
-                    <a href=`mailto:${SITE.EMAIL}`>{SITE.EMAIL}</a>
+                    <a href="tel:+48510159125">510 159 125</a>
                 </p>
             </address>
         </div>
 
         <nav class="footer-navigation" aria-label="Footer navigation">
             <div class="footer-nav-section">
-                <h2 class="headline footer-heading">Company</h2>
+                <h2 class="headline footer-heading">Nawigacja</h2>
                 <ul class="footer-nav-list">
                     <li>
-                        <a href="#hero" class="footer-link">Home</a>
+                        <a href="#hero" class="footer-link">Strona główna</a>
                     </li>
                     <li>
-                        <a href="#about" class="footer-link">About</a>
+                        <a href="#about" class="footer-link">O nas</a>
                     </li>
                     <li>
-                        <a href="#how-it-works" class="footer-link"
-                            >How it Works</a
-                        >
+                        <a href="#how-it-works" class="footer-link">Jak to działa</a>
                     </li>
                     <li>
-                        <a href="#portfolio" class="footer-link">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="footer-link">Contact</a>
+                        <a href="#contact" class="footer-link">Kontakt</a>
                     </li>
                 </ul>
             </div>
 
             <div class="footer-nav-section">
-                <h2 class="headline footer-heading">Social Media</h2>
-                <ul class="footer-nav-list social-links-list">
-                    {
-                        SOCIALS.map((social) => (
-                            <>
-                                <li class="social-item">
-                                    <a
-                                        href={social.HREF}
-                                        aria-label={social.LABEL}
-                                        class="footer-link social-link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Fragment
-                                            set:html={socialIcons[social.ICON]}
-                                        />
-                                        {social.NAME}
-                                    </a>
-                                </li>
-                            </>
-                        ))
-                    }
-                </ul>
-            </div>
-
-            <div class="footer-nav-section">
-                <h2 class="headline footer-heading">Legal & Press</h2>
+                <h2 class="headline footer-heading">Prawne</h2>
                 <ul class="footer-nav-list">
                     <li>
-                        <a href="legal/privacy" class="footer-link"
-                            >Privacy Policy</a
-                        >
+                        <a href="legal/privacy" class="footer-link">Polityka prywatności</a>
                     </li>
                     <li>
-                        <a href="legal/terms" class="footer-link"
-                            >Terms & Conditions</a
-                        >
-                    </li>
-                    <li>
-                        <a href="/sitemap-index.xml" class="footer-link"
-                            >SiteMap</a
-                        >
+                        <a href="legal/terms" class="footer-link">Regulamin</a>
                     </li>
                 </ul>
             </div>
@@ -103,7 +58,7 @@ const currentYear = new Date().getFullYear();
             <p>&copy; {SITE.COMPANY_NAME} {currentYear}.</p>
         </div>
         <div class="location">
-            <p>Based in Beverly Hills, California.</p>
+            <p>Kraków, Polska</p>
         </div>
     </div>
 </footer>
@@ -118,10 +73,10 @@ const currentYear = new Date().getFullYear();
     }
 
     .main-footer {
-        background-color: var(--color-background);
-        padding-block: var(--px-112) var(--px-28);
+        background-color: var(--color-primary);
+        padding-block: var(--px-80) var(--px-28);
         padding-inline: var(--px-64);
-        color: var(--color-text-dark);
+        color: rgba(255, 255, 255, 0.7);
         font-size: var(--text-sm);
     }
 
@@ -131,7 +86,7 @@ const currentYear = new Date().getFullYear();
     }
 
     .headline {
-        color: var(--color-text-primary);
+        color: var(--color-white);
     }
 
     .main-footer p {
@@ -139,23 +94,23 @@ const currentYear = new Date().getFullYear();
     }
 
     .footer-primary {
-        margin-bottom: var(--px-112);
+        margin-bottom: var(--px-80);
     }
 
-    .logo {
-        display: inline-block;
-        margin-bottom: var(--px-28);
-        font-size: var(--text-xl);
-        font-weight: 700;
+    .footer-logo-img {
+        height: 56px;
+        width: auto;
+        margin-bottom: var(--px-20);
     }
 
     .site-description {
-        margin-bottom: var(--px-32);
+        margin-bottom: var(--px-24);
+        max-width: 20rem;
     }
 
     .footer-navigation {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         justify-content: space-between;
         width: 100%;
         margin-left: 16%;
@@ -178,33 +133,33 @@ const currentYear = new Date().getFullYear();
         text-wrap: nowrap;
     }
 
-    .social-link {
-        display: flex;
-        align-items: center;
-        gap: var(--px-6);
-    }
-
-    .social-link :global(svg) {
-        height: var(--px-18);
+    .footer-link {
+        color: rgba(255, 255, 255, 0.7);
     }
 
     .contact-info {
         font-style: normal;
     }
 
+    .contact-info a {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
     .footer-secondary {
         font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
     }
 
     @media (hover: hover) and (pointer: fine) {
-        a:hover {
-            color: var(--color-text-primary);
+        .footer-link:hover,
+        .contact-info a:hover {
+            color: var(--color-white);
         }
     }
 
     @media screen and (max-width: 64rem) {
         .main-footer {
-            padding-top: var(--px-80);
+            padding-top: var(--px-64);
             padding-inline: var(--px-28);
         }
 
@@ -219,13 +174,13 @@ const currentYear = new Date().getFullYear();
         }
 
         .footer-primary {
-            margin-bottom: var(--px-80);
+            margin-bottom: var(--px-64);
         }
     }
 
     @media screen and (max-width: 37.5rem) {
         .main-footer {
-            padding-top: var(--px-64);
+            padding-top: var(--px-48);
         }
 
         .footer-navigation {

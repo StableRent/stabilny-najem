@@ -51,22 +51,24 @@
     --text-xxl: 4rem; /* 64px */
 
     /* Heights */
-    --h-menu-bar: 5.313rem;
-    --h-menu-bar-scrolled: 4.063rem;
+    --h-menu-bar: 6.5rem;
+    --h-menu-bar-scrolled: 4.5rem;
 
-    /* Colors */
-    --color-primary: #010101;
-    --color-secondary: #333;
-    --color-background: #f1f1f1;
+    /* Colors — Stabilny Najem (inspired by 100m2zysku) */
+    --color-primary: #2D3B2D;
+    --color-secondary: #3d4f3d;
+    --color-accent: #B8860B;
+    --color-accent-light: #d4a84b;
+    --color-background: #f5f5f0;
     --color-white: #fff;
-    --color-text-primary: #010101;
-    --color-text-secondary: #757575;
-    --color-text-dark: #4f4f4f;
-    --color-border: rgba(0, 0, 0, 0.183);
-    --color-border-hover: rgba(0, 0, 0, 0.38);
-    --color-border-focus: rgba(0, 0, 0, 0.7);
-    --color-overlay: rgba(0, 0, 0, 0.5);
-    --color-focus: #ff6b35;
+    --color-text-primary: #2D3B2D;
+    --color-text-secondary: #5a6b5a;
+    --color-text-dark: #3d4f3d;
+    --color-border: rgba(45, 59, 45, 0.15);
+    --color-border-hover: rgba(45, 59, 45, 0.35);
+    --color-border-focus: rgba(45, 59, 45, 0.7);
+    --color-overlay: rgba(45, 59, 45, 0.6);
+    --color-focus: #B8860B;
 
     /* Transitions */
     --ease-default: cubic-bezier(0, 0, 0.58, 1);

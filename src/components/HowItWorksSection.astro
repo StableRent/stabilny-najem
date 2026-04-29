@@ -1,148 +1,125 @@
----
-import { Image } from "astro:assets";
-import consultationImage from "/src/assets/images/consultation.jpg";
-import designImage from "/src/assets/images/design.jpg";
-import transformImage from "/src/assets/images/transform.jpg";
-
-const processSteps = [
-    {
-        id: 1,
-        title: "Connect",
-        description:
-            "Begin with a consultation where you share your style, needs, and vision. We listen, ask the right questions, and get to know what truly makes a space feel like home for you.",
-        image: {
-            src: consultationImage,
-            alt: "People talking about an interior design project",
-        },
-    },
-    {
-        id: 2,
-        title: "Design",
-        description:
-            "Using your input, we make a personalized design plan with mood boards, 3D renderings, and detailed layouts — so you can visualize your space before the transformation begins.",
-        image: {
-            src: designImage,
-            alt: "Detailed layouts of entry and bath",
-        },
-    },
-    {
-        id: 3,
-        title: "Transform",
-        description:
-            "Watch your space come to life as our team brings the design to reality with expert craftsmanship, thoughtful execution, and a keen eye for detail.",
-        image: {
-            src: transformImage,
-            alt: "Expert measuring distance",
-        },
-    },
-];
----
-
 <section id="how-it-works" class="process">
-    <div class="section-container">
+    <div class="section-container process-grid">
         <div class="process-content">
-            <span class="section-tag">HOW IT WORKS</span>
-            <h2 class="section-title">How we bring your space to life.</h2>
-            <div class="process-steps">
-                {
-                    processSteps.map((step) => (
-                        <div class="process-step">
-                            <div class="process-step-content">
-                                <h3 class="section-subtitle process-step-title">
-                                    {step.title}
-                                </h3>
-                                <p class="process-step-description">
-                                    {step.description}
-                                </p>
-                            </div>
-                            <div class="process-step-image-wrapper">
-                                <Image
-                                    src={step.image.src}
-                                    alt={step.image.alt}
-                                    width={1272}
-                                    height={660}
-                                    class="media"
-                                />
-                            </div>
-                        </div>
-                    ))
-                }
+            <span class="process-tag">JAK TO DZIAŁA</span>
+            <h2 class="process-title">Jak to działa?</h2>
+            <div class="process-text">
+                <p>Podpisujemy zwykłą umowę najmu — ale z&nbsp;firmą, nie z&nbsp;lokatorem prywatnym. Dzięki temu masz po drugiej stronie jeden profesjonalny podmiot, jasne warunki współpracy i&nbsp;większe bezpieczeństwo niż przy klasycznym najmie osobie fizycznej.</p>
+                <p>Po podpisaniu umowy przejmujemy mieszkanie, odświeżamy je i&nbsp;przygotowujemy do wynajmu. Następnie zajmujemy się znalezieniem najemców, obsługą lokalu, płatnościami, usterkami i&nbsp;wszystkimi bieżącymi sprawami.</p>
+                <p class="process-highlight">Ty otrzymujesz stały czynsz co miesiąc, a&nbsp;wynajem staje się dla Ciebie bezobsługowy — bez ryzyka pustostanów, bez kontaktu z&nbsp;najemcami i&nbsp;bez angażowania Twojego czasu.</p>
             </div>
+            <div class="process-cta">
+                <a href="#contact" class="btn btn--primary btn--big">Zostaw kontakt — oddzwonimy</a>
+            </div>
+        </div>
+        <div class="process-image-wrapper">
+            <img
+                src="/images/danka.jpg"
+                alt="Przygotowane mieszkanie w podnajmie — salon"
+                class="process-img"
+                loading="lazy"
+            />
         </div>
     </div>
 </section>
 
 <style>
-    .process-steps {
-        display: flex;
-        flex-direction: column;
-        gap: var(--px-64);
+    .process {
+        background-color: var(--color-background);
+        padding-block: var(--px-112);
     }
 
-    .process-step {
+    .process-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--px-64);
+        gap: var(--px-80);
         align-items: center;
+        max-width: 90rem;
+        margin: 0 auto;
     }
 
-    .process-step:nth-child(even) {
-        direction: rtl;
+    .process-tag {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: var(--px-20);
     }
 
-    .process-step:nth-child(even) .process-step-content {
-        direction: ltr;
+    .process-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: var(--px-40);
+        letter-spacing: -0.01em;
     }
 
-    .process-step-title {
-        font-size: 1.313rem;
+    .process-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--px-24);
+        font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+        line-height: 1.8;
+        color: var(--color-text-dark);
     }
 
-    .process-step-description {
-        max-width: 31.25rem;
+    .process-text p {
+        opacity: 0.9;
     }
 
-    .process-step-image-wrapper {
+    .process-highlight {
+        font-weight: 600;
+        color: var(--color-primary) !important;
+        opacity: 1 !important;
+        font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    }
+
+    .process-image-wrapper {
+        width: 100%;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .process-img {
         width: 100%;
         height: 100%;
-        max-height: 20.625rem;
-        overflow: hidden;
+        min-height: 24rem;
+        object-fit: cover;
+        display: block;
     }
 
-    @media screen and (max-width: 64rem) {
-        .process-step {
-            gap: var(--px-32);
-        }
+    .process-cta {
+        margin-top: var(--px-48);
+    }
 
-        .process-images {
-            max-height: 18rem;
-        }
+    .btn--big {
+        padding: var(--px-20) var(--px-40);
+        font-size: var(--text-base);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--px-10);
     }
 
     @media screen and (max-width: 48rem) {
-        .process-steps {
-            gap: var(--px-36);
+        .process {
+            padding-block: var(--px-80);
         }
 
-        .process-step {
+        .process-grid {
             grid-template-columns: 1fr;
-            gap: var(--px-32);
+            gap: var(--px-40);
         }
 
-        .process-step:nth-child(even) {
-            direction: ltr;
-        }
-
-        .process-step-content {
+        .process-image-wrapper {
             order: -1;
+            min-height: 14rem;
         }
 
-        .process-step-description {
-            max-width: 100%;
-        }
-
-        .process-images {
-            max-height: 15rem;
+        .process-img {
+            min-height: 14rem;
         }
     }
 </style>
