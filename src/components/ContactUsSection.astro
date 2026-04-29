@@ -5,15 +5,15 @@ import { SITE } from '@consts';
 <section id="contact" class="contact">
     <div class="section-container contact-container">
         <div class="contact-left">
-            <span class="section-tag">KONTAKT</span>
-            <h2 class="section-title">Porozmawiajmy o&nbsp;Twoim mieszkaniu</h2>
+            <span class="contact-tag">KONTAKT</span>
+            <h2 class="contact-title">Porozmawiajmy o&nbsp;Twoim mieszkaniu</h2>
             <p class="contact-desc">Zostaw swoje dane — oddzwonimy i&nbsp;opowiemy, jak to wygląda w&nbsp;praktyce. Bez zobowiązań, bez presji.</p>
 
-            <div class="contact-info">
-                <div class="contact-info-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-3.684 1.684-9.401-9.43-5.8-11.308l1.053-.519 1.746 3.409-1.042.513c-1.095.587 1.185 5.04 2.305 4.497l1.032-.505 1.76 3.397-1.054.516z"/></svg>
-                    <a href="tel:+48510159125">510 159 125</a>
-                </div>
+            <div class="contact-phone-block">
+                <a href="tel:+48510159125" class="contact-phone-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-3.684 1.684-9.401-9.43-5.8-11.308l1.053-.519 1.746 3.409-1.042.513c-1.095.587 1.185 5.04 2.305 4.497l1.032-.505 1.76 3.397-1.054.516z"/></svg>
+                    <span>510 159 125</span>
+                </a>
             </div>
         </div>
 
@@ -49,32 +49,35 @@ import { SITE } from '@consts';
 <style>
     .contact {
         background-color: var(--color-white);
-        padding-block: var(--px-96);
+        padding-block: var(--px-112);
     }
 
     .contact-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--px-64);
+        grid-template-columns: 1fr 1.2fr;
+        gap: var(--px-80);
         align-items: start;
+        max-width: 90rem;
+        margin: 0 auto;
     }
 
-    .section-tag {
+    .contact-tag {
         display: inline-block;
         font-size: var(--text-xs);
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--color-accent);
-        margin-bottom: var(--px-16);
+        margin-bottom: var(--px-20);
     }
 
-    .section-title {
+    .contact-title {
         font-size: clamp(2rem, 4vw, 2.75rem);
         font-weight: 700;
         color: var(--color-primary);
         margin-bottom: var(--px-24);
         letter-spacing: -0.01em;
+        line-height: 1.2;
     }
 
     .contact-desc {
@@ -84,62 +87,56 @@ import { SITE } from '@consts';
         margin-bottom: var(--px-40);
     }
 
-    .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: var(--px-12);
+    .contact-phone-block {
+        margin-top: var(--px-8);
     }
 
-    .contact-info-item {
-        display: flex;
+    .contact-phone-link {
+        display: inline-flex;
         align-items: center;
-        gap: var(--px-10);
-        font-size: var(--text-lg);
-        font-weight: 500;
-        color: var(--color-primary);
-    }
-
-    .contact-info-item svg {
-        color: var(--color-accent);
-        flex-shrink: 0;
-    }
-
-    .contact-info-item a {
+        gap: var(--px-14);
+        font-size: clamp(1.75rem, 3vw, 2.25rem);
+        font-weight: 700;
         color: var(--color-primary);
         transition: color var(--transition-short);
     }
 
+    .contact-phone-link svg {
+        color: var(--color-accent);
+        flex-shrink: 0;
+    }
+
     .contact-form {
         background-color: var(--color-background);
-        padding: var(--px-40);
-        border-radius: var(--radius-md);
+        padding: var(--px-48);
+        border-radius: var(--radius-lg);
     }
 
     .contact-form-fields {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--px-20);
-        margin-bottom: var(--px-28);
+        gap: var(--px-24);
+        margin-bottom: var(--px-32);
     }
 
     .form-group {
         display: grid;
-        gap: var(--px-6);
+        gap: var(--px-8);
     }
 
     .form-label {
-        font-size: var(--text-sm);
-        font-weight: 500;
+        font-size: var(--text-lg);
+        font-weight: 600;
         color: var(--color-primary);
     }
 
     .form-input {
         color: var(--color-text-primary);
-        padding: var(--px-14) var(--px-16);
+        padding: var(--px-18) var(--px-20);
         border: 1px solid var(--color-border);
         background: var(--color-white);
         transition: all var(--transition-short);
-        font-size: var(--text-sm);
+        font-size: var(--text-base);
         border-radius: var(--radius-sm);
     }
 
@@ -152,12 +149,15 @@ import { SITE } from '@consts';
     .btn--full {
         width: 100%;
         justify-content: center;
+        padding: var(--px-20) var(--px-32);
+        font-size: var(--text-lg);
     }
 
     .form-feedback {
-        margin-top: var(--px-16);
+        margin-top: var(--px-20);
         color: var(--color-primary);
-        font-weight: 500;
+        font-weight: 600;
+        font-size: var(--text-lg);
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -165,23 +165,27 @@ import { SITE } from '@consts';
             border-color: var(--color-border-hover);
         }
 
-        .contact-info-item a:hover {
+        .contact-phone-link:hover {
             color: var(--color-accent);
         }
     }
 
     @media (max-width: 48rem) {
         .contact {
-            padding-block: var(--px-64);
+            padding-block: var(--px-80);
         }
 
         .contact-container {
             grid-template-columns: 1fr;
-            gap: var(--px-40);
+            gap: var(--px-48);
         }
 
         .contact-form-fields {
             grid-template-columns: 1fr;
+        }
+
+        .contact-form {
+            padding: var(--px-32);
         }
     }
 </style>
