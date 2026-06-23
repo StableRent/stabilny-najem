@@ -1,0 +1,386 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { apartments } from "@utils/realizacje";
+
+const totalPairs = apartments.reduce((sum, a) => sum + a.pairs.length, 0);
+
+function pairsLabel(n: number) {
+    if (n === 1) return "para zdjęć";
+    if (n >= 2 && n <= 4) return "pary zdjęć";
+    return "par zdjęć";
+}
+---
+
+<BaseLayout
+    title="Realizacje – zdjęcia przed i po | Stabilny Najem"
+    description="Zobacz, jak zmieniają się mieszkania pod naszą opieką. Konkretne, prawdziwe realizacje — stan przed renowacją i po, mieszkanie po mieszkaniu."
+>
+    <section id="realizacje-hero" class="realizacje-hero">
+        <div class="section-container">
+            <span class="section-tag">REALIZACJE</span>
+            <h1 class="hero-title">Zdjęcia przed i po.</h1>
+            <p class="hero-subtitle">
+                Prawdziwe lokalizacje, konkretne adresy. Tak wyglądały
+                mieszkania, zanim trafiły pod naszą opiekę — i tak wyglądają
+                teraz, gotowe na najem. {apartments.length} mieszkań, {totalPairs} par
+                zdjęć przed i po.
+            </p>
+        </div>
+    </section>
+
+    <section id="realizacje-lista" class="realizacje-list">
+        <div class="section-container">
+            {
+                apartments.map((apt) => (
+                    <article
+                        class="apartment"
+                        id={`mieszkanie-${apt.slug}`}
+                    >
+                        <header class="apartment-header">
+                            <h2 class="apartment-title">{apt.displayName}</h2>
+                            <p class="apartment-meta">
+                                {apt.pairs.length} {pairsLabel(apt.pairs.length)}
+                            </p>
+                        </header>
+                        <div class="pairs-grid">
+                            {apt.pairs.map((pair, i) => (
+                                <div class="pair-row">
+                                    <figure class="pair-tile">
+                                        <button
+                                            class="lightbox-trigger"
+                                            type="button"
+                                            aria-label={`Powiększ zdjęcie przed renowacją — ${apt.displayName}`}
+                                        >
+                                            <Image
+                                                src={pair.przed}
+                                                widths={[600, 1200, 1800]}
+                                                sizes="(min-width: 64rem) 42vw, 100vw"
+                                                alt={`${apt.displayName} – stan przed renowacją, ujęcie ${i + 1}`}
+                                                class="pair-img"
+                                                loading="lazy"
+                                            />
+                                            <span class="pair-label pair-label--before">
+                                                Przed
+                                            </span>
+                                        </button>
+                                    </figure>
+                                    <figure class="pair-tile">
+                                        <button
+                                            class="lightbox-trigger"
+                                            type="button"
+                                            aria-label={`Powiększ zdjęcie po renowacji — ${apt.displayName}`}
+                                        >
+                                            <Image
+                                                src={pair.po}
+                                                widths={[600, 1200, 1800]}
+                                                sizes="(min-width: 64rem) 42vw, 100vw"
+                                                alt={`${apt.displayName} – stan po renowacji, ujęcie ${i + 1}`}
+                                                class="pair-img"
+                                                loading="lazy"
+                                            />
+                                            <span class="pair-label pair-label--after">
+                                                Po
+                                            </span>
+                                        </button>
+                                    </figure>
+                                </div>
+                            ))}
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <div
+        id="lightbox"
+        class="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+    >
+        <button class="lightbox-close" type="button" aria-label="Zamknij"
+            >&times;</button
+        >
+        <img id="lightbox-img" class="lightbox-img" alt="" />
+    </div>
+</BaseLayout>
+
+<style>
+    .realizacje-hero {
+        padding-top: calc(var(--h-menu-bar) + var(--px-64));
+        padding-bottom: var(--px-80);
+        background-color: var(--color-background);
+    }
+
+    .hero-title {
+        font-size: clamp(2.25rem, 4vw + var(--text-lg), 4rem);
+        font-weight: 500;
+        line-height: 1.1;
+        color: var(--color-text-primary);
+        margin-bottom: var(--px-24);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-xl);
+        max-width: 50rem;
+        color: var(--color-text-secondary);
+        opacity: 1;
+        line-height: 1.55;
+    }
+
+    .realizacje-list {
+        background-color: var(--color-white);
+    }
+
+    .apartment {
+        margin-bottom: var(--px-128);
+    }
+    .apartment:last-child {
+        margin-bottom: 0;
+    }
+
+    .apartment-header {
+        margin-bottom: var(--px-40);
+        padding-bottom: var(--px-24);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .apartment-title {
+        font-size: clamp(1.75rem, 2.5vw + var(--text-lg), 2.75rem);
+        font-weight: 500;
+        color: var(--color-text-primary);
+        margin-bottom: var(--px-8);
+        letter-spacing: -0.01em;
+    }
+
+    .apartment-meta {
+        font-size: var(--text-xs);
+        letter-spacing: 0.12em;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        opacity: 1;
+    }
+
+    .pairs-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--px-32);
+    }
+
+    .pair-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--px-24);
+    }
+
+    .pair-tile {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        background-color: var(--color-background);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .lightbox-trigger {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: zoom-in;
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+    }
+
+    .pair-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-long);
+        display: block;
+    }
+
+    .pair-label {
+        position: absolute;
+        top: var(--px-16);
+        left: var(--px-16);
+        color: var(--color-white);
+        font-size: var(--text-xs);
+        letter-spacing: 0.14em;
+        font-weight: 600;
+        padding: var(--px-6) var(--px-14);
+        border-radius: var(--radius-sm);
+        text-transform: uppercase;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+
+    .pair-label--before {
+        background: rgba(45, 59, 45, 0.85);
+    }
+
+    .pair-label--after {
+        background: rgba(184, 134, 11, 0.92);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .lightbox-trigger:hover .pair-img {
+            transform: scale(1.025);
+        }
+    }
+
+    /* Lightbox */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(45, 59, 45, 0.96);
+        z-index: var(--z-max);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--px-32);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity var(--transition-medium),
+            visibility var(--transition-medium);
+        cursor: zoom-out;
+    }
+    .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .lightbox-img {
+        max-width: 95vw;
+        max-height: 88vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-sm);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: var(--px-24);
+        right: var(--px-24);
+        width: var(--px-48);
+        height: var(--px-48);
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--color-white);
+        font-size: 1.75rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background var(--transition-short);
+    }
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media screen and (max-width: 64rem) {
+        .apartment {
+            margin-bottom: var(--px-96);
+        }
+    }
+
+    @media screen and (max-width: 48rem) {
+        .realizacje-hero {
+            padding-top: calc(var(--h-menu-bar) + var(--px-32));
+            padding-bottom: var(--px-48);
+        }
+        .pair-row {
+            grid-template-columns: 1fr;
+            gap: var(--px-12);
+        }
+        .pairs-grid {
+            gap: var(--px-24);
+        }
+        .apartment {
+            margin-bottom: var(--px-64);
+        }
+        .apartment-header {
+            margin-bottom: var(--px-24);
+        }
+        .pair-label {
+            top: var(--px-12);
+            left: var(--px-12);
+            font-size: 0.7rem;
+            padding: var(--px-4) var(--px-10);
+        }
+    }
+</style>
+
+<script>
+    function initLightbox() {
+        const lightbox = document.getElementById(
+            "lightbox",
+        ) as HTMLElement | null;
+        const img = document.getElementById(
+            "lightbox-img",
+        ) as HTMLImageElement | null;
+        const closeBtn = lightbox?.querySelector(
+            ".lightbox-close",
+        ) as HTMLElement | null;
+        if (!lightbox || !img) return;
+
+        function openLightbox(target: HTMLImageElement) {
+            img!.srcset = target.srcset;
+            img!.sizes = "100vw";
+            img!.src = target.currentSrc || target.src;
+            img!.alt = target.alt;
+            lightbox!.classList.add("active");
+            lightbox!.setAttribute("aria-hidden", "false");
+            document.body.classList.add("no-scroll");
+        }
+        function closeLightbox() {
+            lightbox!.classList.remove("active");
+            lightbox!.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+        }
+
+        function onClick(e: MouseEvent) {
+            const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(
+                ".lightbox-trigger",
+            );
+            if (!btn) return;
+            const innerImg = btn.querySelector(
+                "img",
+            ) as HTMLImageElement | null;
+            if (innerImg) openLightbox(innerImg);
+        }
+        function onLightboxClick(e: MouseEvent) {
+            if (e.target === img) return;
+            closeLightbox();
+        }
+        function onKey(e: KeyboardEvent) {
+            if (e.key === "Escape" && lightbox!.classList.contains("active"))
+                closeLightbox();
+        }
+
+        document.addEventListener("click", onClick);
+        lightbox.addEventListener("click", onLightboxClick);
+        document.addEventListener("keydown", onKey);
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        return () => {
+            document.removeEventListener("click", onClick);
+            lightbox.removeEventListener("click", onLightboxClick);
+            document.removeEventListener("keydown", onKey);
+            closeBtn?.removeEventListener("click", closeLightbox);
+        };
+    }
+
+    let cleanup = initLightbox();
+    document.addEventListener("astro:after-swap", () => {
+        if (cleanup) cleanup();
+        cleanup = initLightbox();
+    });
+</script>
