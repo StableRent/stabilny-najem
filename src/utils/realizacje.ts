@@ -17,18 +17,28 @@ export type Apartment = {
     pairs: PhotoPair[];
 };
 
-const APARTMENT_META: Array<{ slug: string; displayName: string }> = [
-    { slug: "bobrzynskiego-45", displayName: "Bobrzyńskiego 45" },
-    { slug: "dukatow-1", displayName: "Dukatów 1" },
-    { slug: "grzegorzecka-84-1", displayName: "Grzegórzecka 84/1" },
+// Kolejność = kolejność wyświetlania (od najbardziej spektakularnych).
+// pairOrder: opcjonalna, ręczna kolejność par w mieszkaniu (klucze bez prefiksu przed-/po-).
+const APARTMENT_META: Array<{
+    slug: string;
+    displayName: string;
+    pairOrder?: string[];
+}> = [
+    { slug: "nad-sudolem-24-9", displayName: "Nad Sudołem 24/9" },
+    {
+        slug: "siemienskiego-1",
+        displayName: "Siemieńskiego 1",
+        // duży pokój (2 kąty) → średni → mały → łazienka → korytarz
+        pairOrder: ["2-1", "2-2", "1", "4", "3", "5"],
+    },
+    { slug: "reja-9", displayName: "Reja 9" },
+    { slug: "opolska-35-249", displayName: "Opolska 35/249" },
     { slug: "kluczborska-25", displayName: "Kluczborska 25" },
     { slug: "lipinskiego-8", displayName: "Lipińskiego 8" },
-    { slug: "nad-sudolem-24-9", displayName: "Nad Sudołem 24/9" },
     { slug: "opolska-21", displayName: "Opolska 21" },
-    { slug: "opolska-35-249", displayName: "Opolska 35/249" },
-    { slug: "reja-9", displayName: "Reja 9" },
-    { slug: "siemienskiego-1", displayName: "Siemieńskiego 1" },
-    { slug: "siewna-21b", displayName: "Siewna 21b" },
+    { slug: "grzegorzecka-84-1", displayName: "Grzegórzecka 84/1" },
+    { slug: "dukatow-1", displayName: "Dukatów 1" },
+    { slug: "bobrzynskiego-45", displayName: "Bobrzyńskiego 45" },
 ];
 
 function getImage(
@@ -40,7 +50,7 @@ function getImage(
     return images[path]?.default;
 }
 
-// If exact key not found, fall back to the main number (e.g. "2-1" -> "2").
+// Jeśli exact key nie znaleziony, fall back to main number (e.g. "2-1" -> "2").
 function resolveImage(
     slug: string,
     prefix: "przed" | "po",
@@ -73,7 +83,8 @@ function collectKeys(slug: string): string[] {
 }
 
 export const apartments: Apartment[] = APARTMENT_META.map((meta) => {
-    const pairs = collectKeys(meta.slug)
+    const keys = meta.pairOrder ?? collectKeys(meta.slug);
+    const pairs = keys
         .map((key): PhotoPair | null => {
             const przed = resolveImage(meta.slug, "przed", key);
             const po = resolveImage(meta.slug, "po", key);

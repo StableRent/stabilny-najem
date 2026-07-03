@@ -5,7 +5,7 @@ const owner = {
     companyName: "Stabilny Najem Bolesław Stopa",
     nip: "735-292-90-46",
     phone: "510 159 125",
-    email: "[E-MAIL – DO UZUPEŁNIENIA]",
+    email: "najem.boleslawstopa@gmail.com",
 };
 ---
 
@@ -44,7 +44,7 @@ const owner = {
                 </div>
                 <div class="info-row">
                     <span class="info-label">E-mail</span>
-                    <span class="info-value">{owner.email}</span>
+                    <a class="info-value info-link" href={`mailto:${owner.email}`}>{owner.email}</a>
                 </div>
             </div>
         </div>
