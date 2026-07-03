@@ -161,19 +161,51 @@
     @media screen and (max-width: 48rem) {
         .hero {
             min-height: auto;
-            padding-block: 8rem var(--px-56);
+            padding-block: 6rem var(--px-48);
+            padding-inline: var(--px-16);
         }
 
         .hero-content {
             text-align: left;
         }
 
-        .hero-cta {
-            justify-content: flex-start;
+        .hero-body {
+            padding: var(--px-20) var(--px-20);
         }
 
         .hero-title {
-            font-size: clamp(2.25rem, 9vw, 3.5rem);
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: var(--px-20);
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-base);
+            line-height: 1.6;
+            margin-bottom: var(--px-12);
+            text-align: left;
+        }
+
+        .hero-hook {
+            font-size: var(--text-lg);
+            margin-top: var(--px-12);
+            margin-bottom: var(--px-24);
+            text-align: left;
+        }
+
+        .hero-cta {
+            justify-content: stretch;
+            flex-direction: column;
+            gap: var(--px-12);
+        }
+
+        .hero-cta .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn--big,
+        .btn--outline {
+            padding: var(--px-16) var(--px-24);
         }
     }
 </style>
