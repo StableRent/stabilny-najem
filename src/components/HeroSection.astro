@@ -75,20 +75,36 @@
     }
 
     .hero-body {
-        background: rgba(255, 255, 255, 0.18);
-        -webkit-backdrop-filter: blur(2px);
-        backdrop-filter: blur(2px);
+        background: rgba(255, 255, 255, 0.55);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
         border-radius: var(--radius-lg);
-        padding: var(--px-28) var(--px-48);
+        padding: var(--px-32) var(--px-48);
+        text-align: left;
     }
 
     .hero-subtitle {
-        font-size: clamp(1.1rem, 2vw, 1.35rem);
-        margin-bottom: var(--px-14);
-        line-height: 1.85;
-        color: #000;
-        font-weight: 400;
-        letter-spacing: 0.01em;
+        font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+        margin-bottom: var(--px-16);
+        line-height: 1.7;
+        color: #1a1a1a;
+        font-weight: 500;
+        letter-spacing: 0.005em;
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
+
+    .hero-subtitle:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .hero-hook {
+        text-align: center;
+    }
+
+    .hero-cta {
+        justify-content: center;
     }
 
     .hero-hook {
