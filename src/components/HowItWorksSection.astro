@@ -36,7 +36,7 @@ const responsibilities = [
             <p>Podpisujemy zwykłą umowę najmu — ale z&nbsp;firmą, nie z&nbsp;lokatorem prywatnym. Dzięki temu masz po drugiej stronie jeden profesjonalny podmiot, jasne warunki współpracy i&nbsp;dużo większe bezpieczeństwo niż przy klasycznym najmie osobie fizycznej — nas jako firmy nie chroni ustawa o&nbsp;ochronie praw lokatorów, więc Twoja pozycja jako właściciela jest zdecydowanie mocniejsza.</p>
             <p>To umowa taka sama jak każda inna, z&nbsp;jednym dodatkowym zapisem — Twoją pisemną zgodą na to, byśmy mogli dalej udostępniać lokal osobom, które będą w&nbsp;nim mieszkać. Pozwala na to art.&nbsp;688<sup>2</sup> Kodeksu cywilnego i&nbsp;na tym opiera się cała współpraca.</p>
             <p>Mieszkania wynajmujemy spokojnym, młodym, studiująco-pracującym osobom, które wcześniej sami dokładnie weryfikujemy — masz więc pewność, kto u&nbsp;Ciebie mieszka. Przez cały czas trwania umowy odpowiadamy też za stan lokalu.</p>
-            <p class="process-callout">Po podpisaniu umowy przejmujemy mieszkanie. <strong>Odświeżamy je, znajdujemy najemców, obsługujemy płatności, usterki i&nbsp;bieżące sprawy.</strong> Ty otrzymujesz stały czynsz co&nbsp;miesiąc — bez ryzyka pustostanów, bez kontaktu z&nbsp;najemcami i&nbsp;bez angażowania Twojego czasu.</p>
+            <p>Po podpisaniu umowy przejmujemy mieszkanie. <strong>Odświeżamy je, znajdujemy najemców, obsługujemy płatności, usterki i&nbsp;bieżące sprawy.</strong> Ty otrzymujesz stały czynsz co&nbsp;miesiąc — bez ryzyka pustostanów, bez kontaktu z&nbsp;najemcami i&nbsp;bez angażowania Twojego czasu.</p>
         </div>
 
         <h3 class="process-punchline">Twoja jedyna rola: <em>odebrać czynsz.</em></h3>
@@ -140,19 +140,7 @@ const responsibilities = [
         opacity: 0.92;
     }
 
-    .process-callout {
-        margin-top: var(--px-12);
-        padding: var(--px-24) var(--px-28);
-        background: var(--color-white);
-        border-left: 3px solid var(--color-accent);
-        border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        box-shadow: var(--shadow-sm);
-        opacity: 1 !important;
-        font-size: clamp(1.1rem, 1.4vw, 1.2rem);
-        line-height: 1.7;
-    }
-
-    .process-callout strong {
+    .process-text strong {
         color: var(--color-primary);
         font-weight: 700;
     }
@@ -173,15 +161,16 @@ const responsibilities = [
 
     .process-split {
         display: grid;
-        grid-template-columns: 1fr 1.6fr;
-        gap: var(--px-56);
-        align-items: stretch;
+        grid-template-columns: 1fr 1.75fr;
+        gap: var(--px-48);
+        align-items: start;
     }
 
     .responsibilities {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--px-24);
+        gap: var(--px-16);
+        align-items: start;
     }
 
     .resp-column {
@@ -267,7 +256,7 @@ const responsibilities = [
     .process-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--px-16);
+        gap: var(--px-12);
         align-content: start;
     }
 
@@ -288,14 +277,13 @@ const responsibilities = [
         align-self: flex-end;
         display: inline-flex;
         align-items: center;
-        gap: var(--px-8);
-        padding: var(--px-10) var(--px-20);
-        color: var(--color-primary);
-        font-size: var(--text-sm);
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        border-bottom: 2px solid var(--color-accent);
-        transition: all var(--transition-short);
+        gap: var(--px-6);
+        padding: var(--px-6) 0;
+        color: var(--color-text-secondary);
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        transition: color var(--transition-short);
     }
 
     .process-grid-cta svg {
@@ -304,10 +292,10 @@ const responsibilities = [
 
     @media (hover: hover) and (pointer: fine) {
         .process-grid-cta:hover {
-            color: var(--color-accent);
+            color: var(--color-primary);
         }
         .process-grid-cta:hover svg {
-            transform: translateX(4px);
+            transform: translateX(3px);
         }
     }
 
