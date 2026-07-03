@@ -81,7 +81,7 @@
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: var(--radius-lg);
         padding: var(--px-40) var(--px-56);
-        text-align: left;
+        text-align: center;
         box-shadow:
             0 8px 32px rgba(45, 59, 45, 0.08),
             inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -89,16 +89,15 @@
 
     .hero-subtitle {
         font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+        margin-inline: auto;
         margin-bottom: var(--px-16);
-        line-height: 1.75;
+        max-width: 40rem;
+        line-height: 1.7;
         color: #1a1a1a;
         font-weight: 500;
         letter-spacing: 0.005em;
-        text-align: justify;
-        text-align-last: left;
-        hyphens: auto;
-        -webkit-hyphens: auto;
-        word-spacing: -0.02em;
+        text-align: center;
+        text-wrap: balance;
     }
 
     .hero-subtitle:last-of-type {
@@ -171,12 +170,8 @@
             padding-inline: var(--px-16);
         }
 
-        .hero-content {
-            text-align: left;
-        }
-
         .hero-body {
-            padding: var(--px-20) var(--px-20);
+            padding: var(--px-24) var(--px-20);
         }
 
         .hero-title {
@@ -188,14 +183,12 @@
             font-size: var(--text-base);
             line-height: 1.6;
             margin-bottom: var(--px-12);
-            text-align: left;
         }
 
         .hero-hook {
             font-size: var(--text-lg);
             margin-top: var(--px-12);
             margin-bottom: var(--px-24);
-            text-align: left;
         }
 
         .hero-cta {
