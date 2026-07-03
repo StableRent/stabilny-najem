@@ -2,15 +2,11 @@
     <div class="hero-bg"></div>
     <div class="section-container hero-container">
         <div class="hero-content">
-            <h1 class="hero-title">Twój czynsz na koncie.<br/>Bez Twojego czasu.</h1>
+            <h1 class="hero-title">Twój czynsz na koncie. Co&nbsp;miesiąc.<br/>Bez Twojego czasu.</h1>
             <div class="hero-body">
                 <p class="hero-subtitle">
-                    Przejmujemy wynajem Twojego mieszkania od&nbsp;A&nbsp;do&nbsp;Z — od przygotowania lokalu, przez znalezienie najemców, po obsługę i&nbsp;bieżące sprawy.
+                    Przejmujemy wynajem Twojego mieszkania od&nbsp;A&nbsp;do&nbsp;Z — przygotowanie lokalu, znalezienie i&nbsp;weryfikacja najemców, umowy, płatności, naprawy i&nbsp;bieżące sprawy. Ty otrzymujesz stały czynsz w&nbsp;ustalonym dniu, niezależnie od tego, czy mieszkanie akurat jest zajęte.
                 </p>
-                <p class="hero-subtitle">
-                    Ty otrzymujesz stały czynsz, bez angażu z&nbsp;Twojej strony.
-                </p>
-                <p class="hero-hook">Sam zdecydujesz, czy to dla Ciebie.</p>
                 <div class="hero-cta">
                     <a href="tel:+48510159125" class="btn btn--primary btn--big">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-3.684 1.684-9.401-9.43-5.8-11.308l1.053-.519 1.746 3.409-1.042.513c-1.095.587 1.185 5.04 2.305 4.497l1.032-.505 1.76 3.397-1.054.516z"/></svg>
@@ -18,6 +14,7 @@
                     </a>
                     <a href="#contact" class="btn btn--outline">Napisz do nas</a>
                 </div>
+                <p class="hero-footnote">Umowa z&nbsp;firmą, nie z&nbsp;anonimową osobą prywatną. Zero opłat na start. Sam zdecydujesz, czy to dla Ciebie.</p>
             </div>
         </div>
     </div>
@@ -83,21 +80,20 @@
     }
 
     .hero-subtitle {
-        font-size: clamp(1.1rem, 2vw, 1.35rem);
-        margin-bottom: var(--px-14);
-        line-height: 1.85;
+        font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+        margin-bottom: var(--px-32);
+        line-height: 1.7;
         color: #000;
         font-weight: 400;
         letter-spacing: 0.01em;
     }
 
-    .hero-hook {
-        font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-        font-weight: 600;
-        margin-top: var(--px-16);
-        margin-bottom: var(--px-40);
-        color: #000;
-        letter-spacing: 0.01em;
+    .hero-footnote {
+        margin-top: var(--px-24);
+        font-size: var(--text-sm);
+        line-height: 1.6;
+        color: var(--color-text-dark);
+        opacity: 0.85;
     }
 
     .hero-cta {

@@ -1,0 +1,221 @@
+---
+const owner = {
+    name: "Bolesław Stopa",
+    role: "Właściciel Stabilnego Najmu",
+    // Uzupełnij te dane w gotowym landingu:
+    companyName: "[NAZWA FIRMY]",
+    nip: "[NIP]",
+    phone: "510 159 125",
+    email: "[E-MAIL]",
+};
+---
+
+<section id="about-me" class="about-me">
+    <div class="section-container about-me-grid">
+        <div class="about-me-photo-wrapper">
+            <div class="about-me-photo-placeholder">
+                <span class="photo-label">Twoje zdjęcie tutaj</span>
+                <span class="photo-hint">(dodaj plik do <code>public/images/</code> i&nbsp;podmień w&nbsp;kodzie sekcji)</span>
+            </div>
+        </div>
+
+        <div class="about-me-copy">
+            <span class="about-me-tag">KTO ZA TYM STOI</span>
+            <h2 class="about-me-title">{owner.name}</h2>
+            <p class="about-me-role">{owner.role}</p>
+
+            <div class="about-me-text">
+                <p>Nazywam się <strong>Bolesław Stopa</strong> i&nbsp;to ja odpowiadam za Stabilny Najem. Wiem z&nbsp;doświadczenia, ile czasu i&nbsp;nerwów potrafi zjeść właścicielowi wynajem — dlatego biorę to na siebie.</p>
+                <p>Nie robię tego sam: mam ludzi od odświeżania mieszkań, obsługi najemców i&nbsp;bieżących spraw, więc wszystko dzieje się sprawnie i&nbsp;na czas.</p>
+            </div>
+
+            <div class="about-me-info">
+                <div class="info-row">
+                    <span class="info-label">Firma</span>
+                    <span class="info-value">{owner.companyName}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">NIP</span>
+                    <span class="info-value">{owner.nip}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Telefon</span>
+                    <a class="info-value info-link" href="tel:+48510159125">{owner.phone}</a>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">E-mail</span>
+                    <span class="info-value">{owner.email}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-me {
+        background-color: var(--color-background);
+        padding-block: var(--px-112);
+    }
+
+    .about-me-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: var(--px-80);
+        align-items: center;
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+
+    .about-me-photo-wrapper {
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        background: var(--color-white);
+    }
+
+    .about-me-photo-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--px-12);
+        padding: var(--px-32);
+        text-align: center;
+        background: repeating-linear-gradient(
+            45deg,
+            var(--color-white),
+            var(--color-white) 12px,
+            var(--color-background) 12px,
+            var(--color-background) 24px
+        );
+        color: var(--color-text-secondary);
+    }
+
+    .photo-label {
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--color-primary);
+    }
+
+    .photo-hint {
+        font-size: var(--text-xs);
+        opacity: 0.8;
+        max-width: 20rem;
+    }
+
+    .photo-hint code {
+        background: var(--color-background);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .about-me-tag {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: var(--px-16);
+    }
+
+    .about-me-title {
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
+        font-weight: 700;
+        color: var(--color-primary);
+        letter-spacing: -0.01em;
+        margin-bottom: var(--px-6);
+    }
+
+    .about-me-role {
+        font-size: var(--text-lg);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--px-32);
+    }
+
+    .about-me-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--px-16);
+        font-size: clamp(1.05rem, 1.35vw, 1.15rem);
+        line-height: 1.75;
+        color: var(--color-text-dark);
+        margin-bottom: var(--px-40);
+    }
+
+    .about-me-text p {
+        opacity: 0.92;
+    }
+
+    .about-me-text strong {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+
+    .about-me-info {
+        display: grid;
+        gap: var(--px-14);
+        padding: var(--px-24) var(--px-28);
+        background: var(--color-white);
+        border-radius: var(--radius-md);
+        border-left: 3px solid var(--color-accent);
+    }
+
+    .info-row {
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+        gap: var(--px-16);
+        align-items: baseline;
+    }
+
+    .info-label {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+    }
+
+    .info-value {
+        font-size: var(--text-base);
+        color: var(--color-text-primary);
+        font-weight: 500;
+    }
+
+    .info-link {
+        color: var(--color-primary);
+        transition: color var(--transition-short);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .info-link:hover {
+            color: var(--color-accent);
+        }
+    }
+
+    @media screen and (max-width: 64rem) {
+        .about-me-grid {
+            grid-template-columns: 1fr;
+            gap: var(--px-48);
+        }
+
+        .about-me-photo-wrapper {
+            max-width: 26rem;
+            margin-inline: auto;
+        }
+    }
+
+    @media screen and (max-width: 48rem) {
+        .about-me {
+            padding-block: var(--px-80);
+        }
+
+        .info-row {
+            grid-template-columns: 5rem 1fr;
+        }
+    }
+</style>

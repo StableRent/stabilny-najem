@@ -7,7 +7,7 @@ import { SITE } from '@consts';
         <div class="contact-left">
             <span class="contact-tag">KONTAKT</span>
             <h2 class="contact-title">Porozmawiajmy o&nbsp;Twoim mieszkaniu</h2>
-            <p class="contact-desc">Zostaw swoje dane — oddzwonimy i&nbsp;opowiemy, jak to wygląda w&nbsp;praktyce. Bez zobowiązań, bez presji.</p>
+            <p class="contact-desc">Zostaw dane — oddzwonimy i&nbsp;spokojnie opowiemy, jak to wygląda w&nbsp;praktyce dokładnie dla Twojego mieszkania. Bez zobowiązań, bez presji. Najpierw rozmowa, potem ewentualnie decyzja — i&nbsp;to Twoja.</p>
 
             <div class="contact-phone-block">
                 <a href="tel:+48510159125" class="contact-phone-link">
@@ -42,6 +42,7 @@ import { SITE } from '@consts';
             <div id="form-feedback" class="form-feedback" hidden>
                 <p>Dziękujemy! Twoja wiadomość została wysłana.</p>
             </div>
+            <p class="form-privacy">Nie wysyłamy spamu. Kontaktujemy się tylko w&nbsp;sprawie Twojego zapytania.</p>
         </form>
     </div>
 </section>
@@ -158,6 +159,14 @@ import { SITE } from '@consts';
         color: var(--color-primary);
         font-weight: 600;
         font-size: var(--text-lg);
+    }
+
+    .form-privacy {
+        margin-top: var(--px-20);
+        font-size: var(--text-xs);
+        color: var(--color-text-secondary);
+        text-align: center;
+        opacity: 1;
     }
 
     @media (hover: hover) and (pointer: fine) {
