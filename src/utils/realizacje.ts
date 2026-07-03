@@ -24,7 +24,7 @@ const APARTMENT_META: Array<{
     displayName: string;
     pairOrder?: string[];
 }> = [
-    { slug: "nad-sudolem-24-9", displayName: "Nad Sudołem 24/9" },
+    { slug: "nad-sudolem-24-9", displayName: "Nad Sudołem 24" },
     {
         slug: "siemienskiego-1",
         displayName: "Siemieńskiego 1",
@@ -32,12 +32,17 @@ const APARTMENT_META: Array<{
         pairOrder: ["2-1", "2-2", "1", "4", "3", "5"],
     },
     { slug: "reja-9", displayName: "Reja 9" },
-    { slug: "opolska-35-249", displayName: "Opolska 35/249" },
+    { slug: "opolska-35-249", displayName: "Opolska 35" },
+    { slug: "opolska-21", displayName: "Opolska 21" },
     { slug: "kluczborska-25", displayName: "Kluczborska 25" },
     { slug: "lipinskiego-8", displayName: "Lipińskiego 8" },
-    { slug: "opolska-21", displayName: "Opolska 21" },
-    { slug: "grzegorzecka-84-1", displayName: "Grzegórzecka 84/1" },
-    { slug: "dukatow-1", displayName: "Dukatów 1" },
+    { slug: "grzegorzecka-84-1", displayName: "Grzegórzecka 84" },
+    {
+        slug: "dukatow-1",
+        displayName: "Dukatów 1",
+        // usuwamy parę #2, żeby galeria była krótsza
+        pairOrder: ["1", "3", "4-1", "4-2"],
+    },
     { slug: "bobrzynskiego-45", displayName: "Bobrzyńskiego 45" },
 ];
 

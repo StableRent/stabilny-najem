@@ -6,7 +6,7 @@
                 <p>Wynajem mieszkania często wygląda dobrze tylko na papierze.</p>
                 <p>Najpierw ogłoszenie. Telefony. Prezentacje. Selekcja najemców.</p>
                 <p>Potem umowy, protokoły, płatności, drobne naprawy, bieżący kontakt.</p>
-                <p>A między tym wszystkim — Twój czas. Twoja głowa. Twoja odpowiedzialność.</p>
+                <p class="problem-emphasis">A&nbsp;między tym wszystkim — <strong>Twój czas.</strong> <strong>Twoja głowa.</strong> <strong>Twoja odpowiedzialność.</strong></p>
                 <p>Gdy wszystko działa, jest dobrze. Ale gdy pojawia się pustostan, usterka albo opóźnienie w&nbsp;płatności — problem jest tylko Twój.</p>
             </div>
 
@@ -82,6 +82,18 @@
 
     .problem-text p {
         opacity: 0.9;
+    }
+
+    .problem-emphasis {
+        opacity: 1 !important;
+        font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+        line-height: 1.55;
+        margin-top: var(--px-8);
+    }
+
+    .problem-emphasis strong {
+        color: var(--color-primary);
+        font-weight: 700;
     }
 
     .problem-divider {
