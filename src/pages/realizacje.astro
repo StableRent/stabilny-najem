@@ -100,6 +100,12 @@ function pairsLabel(n: number) {
         <button class="lightbox-close" type="button" aria-label="Zamknij"
             >&times;</button
         >
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Poprzednie zdjęcie">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Następne zdjęcie">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
         <img id="lightbox-img" class="lightbox-img" alt="" />
     </div>
 </BaseLayout>
@@ -282,6 +288,42 @@ function pairsLabel(n: number) {
         background: rgba(255, 255, 255, 0.3);
     }
 
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--color-white);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background var(--transition-short);
+        z-index: 2;
+    }
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .lightbox-prev {
+        left: var(--px-24);
+    }
+    .lightbox-next {
+        right: var(--px-24);
+    }
+
+    @media screen and (max-width: 48rem) {
+        .lightbox-nav {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+        .lightbox-prev { left: var(--px-8); }
+        .lightbox-next { right: var(--px-8); }
+    }
+
     @media screen and (max-width: 64rem) {
         .apartment {
             margin-bottom: var(--px-96);
@@ -317,22 +359,31 @@ function pairsLabel(n: number) {
 
 <script>
     function initLightbox() {
-        const lightbox = document.getElementById(
-            "lightbox",
-        ) as HTMLElement | null;
-        const img = document.getElementById(
-            "lightbox-img",
-        ) as HTMLImageElement | null;
-        const closeBtn = lightbox?.querySelector(
-            ".lightbox-close",
-        ) as HTMLElement | null;
+        const lightbox = document.getElementById("lightbox") as HTMLElement | null;
+        const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+        const closeBtn = lightbox?.querySelector(".lightbox-close") as HTMLElement | null;
+        const prevBtn = lightbox?.querySelector(".lightbox-prev") as HTMLElement | null;
+        const nextBtn = lightbox?.querySelector(".lightbox-next") as HTMLElement | null;
         if (!lightbox || !img) return;
 
-        function openLightbox(target: HTMLImageElement) {
+        const triggers = Array.from(
+            document.querySelectorAll<HTMLButtonElement>(".lightbox-trigger"),
+        );
+        let currentIndex = -1;
+
+        function showAt(index: number) {
+            if (index < 0 || index >= triggers.length) return;
+            currentIndex = index;
+            const target = triggers[index].querySelector("img") as HTMLImageElement | null;
+            if (!target) return;
             img!.srcset = target.srcset;
             img!.sizes = "100vw";
             img!.src = target.currentSrc || target.src;
             img!.alt = target.alt;
+        }
+
+        function openAt(index: number) {
+            showAt(index);
             lightbox!.classList.add("active");
             lightbox!.setAttribute("aria-hidden", "false");
             document.body.classList.add("no-scroll");
@@ -341,43 +392,51 @@ function pairsLabel(n: number) {
             lightbox!.classList.remove("active");
             lightbox!.setAttribute("aria-hidden", "true");
             document.body.classList.remove("no-scroll");
+            currentIndex = -1;
+        }
+        function next() {
+            if (currentIndex < 0) return;
+            showAt((currentIndex + 1) % triggers.length);
+        }
+        function prev() {
+            if (currentIndex < 0) return;
+            showAt((currentIndex - 1 + triggers.length) % triggers.length);
         }
 
         function onClick(e: MouseEvent) {
-            const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(
-                ".lightbox-trigger",
-            );
+            const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".lightbox-trigger");
             if (!btn) return;
-            const innerImg = btn.querySelector(
-                "img",
-            ) as HTMLImageElement | null;
-            if (innerImg) openLightbox(innerImg);
+            const index = triggers.indexOf(btn);
+            if (index >= 0) openAt(index);
         }
         function onLightboxClick(e: MouseEvent) {
-            if (e.target === img) return;
+            const target = e.target as HTMLElement;
+            if (target === img) return;
+            if (target.closest(".lightbox-nav")) return;
+            if (target.closest(".lightbox-close")) return;
             closeLightbox();
         }
         function onKey(e: KeyboardEvent) {
-            if (e.key === "Escape" && lightbox!.classList.contains("active"))
+            if (!lightbox!.classList.contains("active")) return;
+            if (e.key === "Escape") {
+                e.preventDefault();
                 closeLightbox();
+            } else if (e.key === "ArrowRight") {
+                e.preventDefault();
+                next();
+            } else if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                prev();
+            }
         }
 
         document.addEventListener("click", onClick);
         lightbox.addEventListener("click", onLightboxClick);
         document.addEventListener("keydown", onKey);
-        closeBtn?.addEventListener("click", closeLightbox);
-
-        return () => {
-            document.removeEventListener("click", onClick);
-            lightbox.removeEventListener("click", onLightboxClick);
-            document.removeEventListener("keydown", onKey);
-            closeBtn?.removeEventListener("click", closeLightbox);
-        };
+        closeBtn?.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
+        prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); prev(); });
+        nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); next(); });
     }
 
-    let cleanup = initLightbox();
-    document.addEventListener("astro:after-swap", () => {
-        if (cleanup) cleanup();
-        cleanup = initLightbox();
-    });
+    initLightbox();
 </script>
