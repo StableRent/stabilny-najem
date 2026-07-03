@@ -33,10 +33,10 @@ const responsibilities = [
         </div>
 
         <div class="process-text">
-            <p>Podpisujemy zwykłą umowę najmu — ale z&nbsp;firmą, nie z&nbsp;lokatorem prywatnym. Dzięki temu masz po drugiej stronie jeden profesjonalny podmiot, jasne warunki współpracy i&nbsp;większe bezpieczeństwo niż przy klasycznym najmie osobie fizycznej.</p>
+            <p>Podpisujemy zwykłą umowę najmu — ale z&nbsp;firmą, nie z&nbsp;lokatorem prywatnym. Dzięki temu masz po drugiej stronie jeden profesjonalny podmiot, jasne warunki współpracy i&nbsp;dużo większe bezpieczeństwo niż przy klasycznym najmie osobie fizycznej — nas jako firmy nie chroni ustawa o&nbsp;ochronie praw lokatorów, więc Twoja pozycja jako właściciela jest zdecydowanie mocniejsza.</p>
             <p>To umowa taka sama jak każda inna, z&nbsp;jednym dodatkowym zapisem — Twoją pisemną zgodą na to, byśmy mogli dalej udostępniać lokal osobom, które będą w&nbsp;nim mieszkać. Pozwala na to art.&nbsp;688<sup>2</sup> Kodeksu cywilnego i&nbsp;na tym opiera się cała współpraca.</p>
             <p>Mieszkania wynajmujemy spokojnym, młodym, studiująco-pracującym osobom, które wcześniej sami dokładnie weryfikujemy — masz więc pewność, kto u&nbsp;Ciebie mieszka. Przez cały czas trwania umowy odpowiadamy też za stan lokalu.</p>
-            <p>Po podpisaniu umowy przejmujemy mieszkanie, odświeżamy je i&nbsp;zajmujemy się znalezieniem najemców, płatnościami, usterkami i&nbsp;bieżącymi sprawami. Ty otrzymujesz stały czynsz co&nbsp;miesiąc — bez ryzyka pustostanów, bez kontaktu z&nbsp;najemcami i&nbsp;bez angażowania Twojego czasu.</p>
+            <p class="process-callout">Po podpisaniu umowy przejmujemy mieszkanie. <strong>Odświeżamy je, znajdujemy najemców, obsługujemy płatności, usterki i&nbsp;bieżące sprawy.</strong> Ty otrzymujesz stały czynsz co&nbsp;miesiąc — bez ryzyka pustostanów, bez kontaktu z&nbsp;najemcami i&nbsp;bez angażowania Twojego czasu.</p>
         </div>
 
         <h3 class="process-punchline">Twoja jedyna rola: <em>odebrać czynsz.</em></h3>
@@ -64,21 +64,34 @@ const responsibilities = [
                 </div>
             </div>
 
-            <a href="/realizacje" class="process-grid" aria-label="Zobacz nasze realizacje">
-                {gridImages.map((img) => (
-                    <figure class="process-grid-item">
-                        <Image
-                            src={img.src}
-                            widths={[300, 600]}
-                            sizes="(min-width: 64rem) 20vw, 45vw"
-                            alt={`Realizacja: ${img.label}`}
-                            class="process-grid-img"
-                            loading="lazy"
-                        />
-                        <figcaption class="process-grid-caption">{img.label}</figcaption>
-                    </figure>
-                ))}
-            </a>
+            <div class="process-grid-wrapper">
+                <div class="process-grid">
+                    {gridImages.map((img) => (
+                        <button type="button" class="process-grid-item process-lightbox-trigger" aria-label={`Powiększ: ${img.label}`}>
+                            <Image
+                                src={img.src}
+                                widths={[400, 800, 1400]}
+                                sizes="(min-width: 64rem) 30vw, 50vw"
+                                alt={`Realizacja: ${img.label}`}
+                                class="process-grid-img"
+                                loading="lazy"
+                            />
+                            <span class="process-grid-caption">{img.label}</span>
+                        </button>
+                    ))}
+                </div>
+                <a href="/realizacje" class="process-grid-cta">
+                    Zobacz wszystkie realizacje
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div id="process-lightbox" class="process-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+            <button class="process-lightbox-close" type="button" aria-label="Zamknij">&times;</button>
+            <img id="process-lightbox-img" class="process-lightbox-img" alt="" />
         </div>
     </div>
 </section>
@@ -127,6 +140,23 @@ const responsibilities = [
         opacity: 0.92;
     }
 
+    .process-callout {
+        margin-top: var(--px-12);
+        padding: var(--px-24) var(--px-28);
+        background: var(--color-white);
+        border-left: 3px solid var(--color-accent);
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        box-shadow: var(--shadow-sm);
+        opacity: 1 !important;
+        font-size: clamp(1.1rem, 1.4vw, 1.2rem);
+        line-height: 1.7;
+    }
+
+    .process-callout strong {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+
     .process-punchline {
         font-size: clamp(1.5rem, 2.5vw, 2rem);
         font-weight: 700;
@@ -143,8 +173,8 @@ const responsibilities = [
 
     .process-split {
         display: grid;
-        grid-template-columns: 1fr 1.35fr;
-        gap: var(--px-64);
+        grid-template-columns: 1fr 1.6fr;
+        gap: var(--px-56);
         align-items: stretch;
     }
 
@@ -228,20 +258,57 @@ const responsibilities = [
         display: none;
     }
 
+    .process-grid-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--px-24);
+    }
+
     .process-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--px-12);
+        gap: var(--px-16);
         align-content: start;
     }
 
     .process-grid-item {
         position: relative;
         margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: zoom-in;
         aspect-ratio: 4 / 3;
         overflow: hidden;
         border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-md);
+    }
+
+    .process-grid-cta {
+        align-self: flex-end;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--px-8);
+        padding: var(--px-10) var(--px-20);
+        color: var(--color-primary);
+        font-size: var(--text-sm);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        border-bottom: 2px solid var(--color-accent);
+        transition: all var(--transition-short);
+    }
+
+    .process-grid-cta svg {
+        transition: transform var(--transition-short);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .process-grid-cta:hover {
+            color: var(--color-accent);
+        }
+        .process-grid-cta:hover svg {
+            transform: translateX(4px);
+        }
     }
 
     .process-grid-img {
@@ -270,9 +337,59 @@ const responsibilities = [
     }
 
     @media (hover: hover) and (pointer: fine) {
-        .process-grid:hover .process-grid-img {
-            transform: scale(1.03);
+        .process-grid-item:hover .process-grid-img {
+            transform: scale(1.04);
         }
+    }
+
+    /* Lightbox */
+    .process-lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(45, 59, 45, 0.96);
+        z-index: var(--z-max);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--px-32);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-medium), visibility var(--transition-medium);
+        cursor: zoom-out;
+    }
+    .process-lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .process-lightbox-img {
+        max-width: 95vw;
+        max-height: 88vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-sm);
+    }
+    .process-lightbox-close {
+        position: absolute;
+        top: var(--px-24);
+        right: var(--px-24);
+        width: var(--px-48);
+        height: var(--px-48);
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--color-white);
+        font-size: 1.75rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background var(--transition-short);
+    }
+    .process-lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.3);
     }
 
     @media screen and (max-width: 64rem) {
@@ -300,3 +417,48 @@ const responsibilities = [
         }
     }
 </style>
+
+<script>
+    function initProcessLightbox() {
+        const lightbox = document.getElementById("process-lightbox") as HTMLElement | null;
+        const img = document.getElementById("process-lightbox-img") as HTMLImageElement | null;
+        const closeBtn = lightbox?.querySelector(".process-lightbox-close") as HTMLElement | null;
+        if (!lightbox || !img) return;
+
+        function openLightbox(target: HTMLImageElement) {
+            img!.srcset = target.srcset;
+            img!.sizes = "100vw";
+            img!.src = target.currentSrc || target.src;
+            img!.alt = target.alt;
+            lightbox!.classList.add("active");
+            lightbox!.setAttribute("aria-hidden", "false");
+            document.body.classList.add("no-scroll");
+        }
+        function closeLightbox() {
+            lightbox!.classList.remove("active");
+            lightbox!.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+        }
+
+        function onClick(e: MouseEvent) {
+            const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".process-lightbox-trigger");
+            if (!btn) return;
+            const innerImg = btn.querySelector("img") as HTMLImageElement | null;
+            if (innerImg) openLightbox(innerImg);
+        }
+        function onLightboxClick(e: MouseEvent) {
+            if (e.target === img) return;
+            closeLightbox();
+        }
+        function onKey(e: KeyboardEvent) {
+            if (e.key === "Escape" && lightbox!.classList.contains("active")) closeLightbox();
+        }
+
+        document.addEventListener("click", onClick);
+        lightbox.addEventListener("click", onLightboxClick);
+        document.addEventListener("keydown", onKey);
+        closeBtn?.addEventListener("click", closeLightbox);
+    }
+
+    initProcessLightbox();
+</script>

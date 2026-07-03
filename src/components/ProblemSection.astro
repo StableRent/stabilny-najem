@@ -8,6 +8,7 @@
                 <p>Potem umowy, protokoły, płatności, drobne naprawy, bieżący kontakt.</p>
                 <p class="problem-emphasis">A&nbsp;między tym wszystkim — <strong>Twój czas.</strong> <strong>Twoja głowa.</strong> <strong>Twoja odpowiedzialność.</strong></p>
                 <p>Gdy wszystko działa, jest dobrze. Ale gdy pojawia się pustostan, usterka albo opóźnienie w&nbsp;płatności — problem jest tylko Twój.</p>
+                <p class="problem-answer"><strong>Twój czas należy do&nbsp;Ciebie. My bierzemy resztę.</strong></p>
             </div>
 
             <hr class="problem-divider" />
@@ -92,6 +93,22 @@
     }
 
     .problem-emphasis strong {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+
+    .problem-answer {
+        margin-top: var(--px-24);
+        padding: var(--px-20) var(--px-24);
+        border-left: 3px solid var(--color-accent);
+        background: rgba(184, 134, 11, 0.06);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        opacity: 1 !important;
+        font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+        line-height: 1.55;
+    }
+
+    .problem-answer strong {
         color: var(--color-primary);
         font-weight: 700;
     }
