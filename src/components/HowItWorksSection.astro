@@ -1,14 +1,27 @@
 ---
+import { Image } from "astro:assets";
+import gridImg1 from "@assets/realizacje/bobrzynskiego-45/po-1.jpg";
+import gridImg2 from "@assets/realizacje/dukatow-1/po-1.jpg";
+import gridImg3 from "@assets/realizacje/kluczborska-25/po-1.jpg";
+import gridImg4 from "@assets/realizacje/siemienskiego-1/po-1.jpg";
+
+const gridImages = [
+    { src: gridImg1, label: "Bobrzyńskiego 45" },
+    { src: gridImg2, label: "Dukatów 1" },
+    { src: gridImg3, label: "Kluczborska 25" },
+    { src: gridImg4, label: "Siemieńskiego 1" },
+];
+
 const responsibilities = [
-    { yours: "Odbieranie stałego czynszu", ours: "Przygotowanie i odświeżenie mieszkania" },
-    { yours: "", ours: "Ogłoszenia, telefony, prezentacje" },
-    { yours: "", ours: "Weryfikacja i selekcja najemców" },
-    { yours: "", ours: "Umowy, protokoły, rozliczenia" },
-    { yours: "", ours: "Płatności i windykacja" },
-    { yours: "", ours: "Naprawy i bieżące usterki" },
-    { yours: "", ours: "Kontakt z lokatorami" },
-    { yours: "", ours: "Ryzyko pustostanu" },
-    { yours: "", ours: "Drobne kryzysy i „co teraz?”" },
+    "Przygotowanie i odświeżenie mieszkania",
+    "Ogłoszenia, telefony, prezentacje",
+    "Weryfikacja i selekcja najemców",
+    "Umowy, protokoły, rozliczenia",
+    "Płatności i windykacja",
+    "Naprawy i bieżące usterki",
+    "Kontakt z lokatorami",
+    "Ryzyko pustostanu",
+    "Drobne kryzysy i „co teraz?”",
 ];
 ---
 
@@ -44,21 +57,28 @@ const responsibilities = [
                         <span class="resp-head-label">Bierzemy na siebie</span>
                     </div>
                     <ul class="resp-list">
-                        {responsibilities.filter(r => r.ours).map(r => (
-                            <li>{r.ours}</li>
+                        {responsibilities.map(item => (
+                            <li>{item}</li>
                         ))}
                     </ul>
                 </div>
             </div>
 
-            <div class="process-image-wrapper">
-                <img
-                    src="/images/siemienskiego.jpg"
-                    alt="Przygotowane, odświeżone mieszkanie — gotowe do wynajmu"
-                    class="process-img"
-                    loading="lazy"
-                />
-            </div>
+            <a href="/realizacje" class="process-grid" aria-label="Zobacz nasze realizacje">
+                {gridImages.map((img) => (
+                    <figure class="process-grid-item">
+                        <Image
+                            src={img.src}
+                            widths={[300, 600]}
+                            sizes="(min-width: 64rem) 20vw, 45vw"
+                            alt={`Realizacja: ${img.label}`}
+                            class="process-grid-img"
+                            loading="lazy"
+                        />
+                        <figcaption class="process-grid-caption">{img.label}</figcaption>
+                    </figure>
+                ))}
+            </a>
         </div>
     </div>
 </section>
@@ -208,20 +228,51 @@ const responsibilities = [
         display: none;
     }
 
-    .process-image-wrapper {
-        overflow: hidden;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-lg);
-        min-height: 100%;
+    .process-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--px-12);
+        align-content: start;
     }
 
-    .process-img {
+    .process-grid-item {
+        position: relative;
+        margin: 0;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .process-grid-img {
         width: 100%;
         height: 100%;
-        min-height: 30rem;
         object-fit: cover;
         display: block;
-        filter: brightness(1.05) saturate(1.05);
+        transition: transform var(--transition-long);
+    }
+
+    .process-grid-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: var(--px-14) var(--px-16);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--color-white);
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.65) 100%
+        );
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .process-grid:hover .process-grid-img {
+            transform: scale(1.03);
+        }
     }
 
     @media screen and (max-width: 64rem) {
@@ -230,13 +281,8 @@ const responsibilities = [
             gap: var(--px-40);
         }
 
-        .process-image-wrapper {
-            min-height: auto;
+        .process-grid {
             order: -1;
-        }
-
-        .process-img {
-            min-height: 20rem;
         }
     }
 
